@@ -8,6 +8,7 @@ import PaletteEditionCard from './palette-edition-card';
 const styles = (theme) => ({
   root: {
     overflowY: 'auto',
+    type : "dark",
   },
   card: {
     margin: theme.spacing.unit,
