@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import {Button, ListItem} from "@material-ui/core";
 
 
-
 const styles = (theme) => ({
     root: {
         paddingBottom: theme.spacing.unit,
@@ -17,16 +16,17 @@ const styles = (theme) => ({
         fontSize: 14,
     },
 });
+
 class UploadCard extends React.PureComponent {
     state = {
-        STRING : "",
+        STRING: "",
     };
 
     storeString = (event) => {
         const fileReader = new FileReader();
         fileReader.readAsText(event.target.files[0]);
         fileReader.onload = (ev) => {
-            this.setState({STRING : ev.target.result})
+            this.setState({STRING: ev.target.result})
         }
     };
 
@@ -35,8 +35,7 @@ class UploadCard extends React.PureComponent {
             try {
                 let theme = JSON.parse(this.state.STRING);
                 this.props.onChange(theme);
-            }
-            catch (e) {
+            } catch (e) {
                 console.log(e.toString())
             }
         }
@@ -45,7 +44,7 @@ class UploadCard extends React.PureComponent {
     render() {
         const {classes, rootClassName} = this.props;
         return (
-            <Card className={cn(rootClassName, classes.root)} style={{height : "fit-content", display : "inline-table"}}>
+            <Card className={cn(rootClassName, classes.root)} style={{height: "fit-content", display: "inline-table"}}>
                 <CardContent>
                     <Typography
                         variant={"subheading"}
@@ -56,14 +55,15 @@ class UploadCard extends React.PureComponent {
                 </CardContent>
                 <List dense>
                     <ListItem>
-                        <input style={{color : "white"}} type="file" accept=".json,application/json" id="jsonFileInput" onChange={this.storeString}/>
+                        <input style={{color: "white"}} type="file" accept=".json,application/json" id="jsonFileInput"
+                               onChange={this.storeString}/>
                     </ListItem>
                     <ListItem>
                         <Button
                             variant={"contained"}
                             color={"secondary"}
                             onClick={this.loadTheme}
-                            style={{textTransform : "capitalize"}}
+                            style={{textTransform: "capitalize"}}
                         >
                             load theme
                         </Button>
@@ -73,4 +73,5 @@ class UploadCard extends React.PureComponent {
         );
     }
 }
+
 export default withStyles(styles)(UploadCard);

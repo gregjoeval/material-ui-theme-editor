@@ -9,7 +9,6 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -19,7 +18,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const style = {
     card: {
         maxWidth: 345,
-        margin : "20px auto",
+        margin: "20px auto",
     },
     media: {
         height: 0,
@@ -55,7 +54,7 @@ export default function RecipeReviewCard() {
                 }
                 action={
                     <IconButton aria-label="settings">
-                        <MoreVertIcon />
+                        <MoreVertIcon/>
                     </IconButton>
                 }
                 title="Shrimp and Chorizo Paella"
@@ -74,10 +73,10 @@ export default function RecipeReviewCard() {
             </CardContent>
             <CardActions>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
+                    <FavoriteIcon/>
                 </IconButton>
                 <IconButton aria-label="share">
-                    <ShareIcon />
+                    <ShareIcon/>
                 </IconButton>
                 <IconButton
                     className={clsx(style.expand, {
@@ -87,7 +86,7 @@ export default function RecipeReviewCard() {
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <ExpandMoreIcon />
+                    <ExpandMoreIcon/>
                 </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>

@@ -1,40 +1,40 @@
 [
   {
-    "section" : "palette",
-    "label" : "Palette",
-    "cards" : [
+    "section": "palette",
+    "label": "Palette",
+    "cards": [
       {
-        "label" : "Palette Type",
-        "fields" : [
+        "label": "Palette Type",
+        "fields": [
           {
-            "type" : "select",
-            "name" : "type",
-            "label" : "Type",
-            "options" : [
+            "type": "select",
+            "name": "type",
+            "label": "Type",
+            "options": [
               {
-                "label" : "Light",
-                "value" : "light"
+                "label": "Light",
+                "value": "light"
               },
               {
-                "label" : "Dark",
-                "value" : "dark"
+                "label": "Dark",
+                "value": "dark"
               }
             ]
           }
         ]
       },
       {
-        "label" : "Common Colors",
-        "fields" : [
+        "label": "Common Colors",
+        "fields": [
           {
-            "type" : "color",
-            "name" : "black",
-            "label" : "Black"
+            "type": "color",
+            "name": "black",
+            "label": "Black"
           },
           {
-            "type" : "color",
-            "name" : "white",
-            "label" : "white"
+            "type": "color",
+            "name": "white",
+            "label": "white"
           }
         ]
       }

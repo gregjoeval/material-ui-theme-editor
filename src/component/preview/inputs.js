@@ -7,20 +7,20 @@ import {Slider} from "@material-ui/lab";
 import Switch from "@material-ui/core/Switch";
 
 const styles = (theme) => ({
-    wrapper : {
+    wrapper: {
         width: "100%",
         display: "flex",
         flexDirection: "row",
-        justifyContent : "space-around",
-        flexWrap : "wrap",
+        justifyContent: "space-around",
+        flexWrap: "wrap",
     },
     root: {
         padding: theme.spacing.unit,
-        display : "flex",
-        flexDirection : "column",
-        minWidth : 261,
+        display: "flex",
+        flexDirection: "column",
+        minWidth: 261,
         justifyContent: "center",
-        alignItems : "center"
+        alignItems: "center"
     },
     button: {
         margin: theme.spacing.unit,
@@ -34,9 +34,10 @@ class PreviewInputs extends React.PureComponent {
     };
 
     state = {
-        checkedP : true,
-        checkedS : true,
+        checkedP: true,
+        checkedS: true,
     };
+
     render() {
         const {classes} = this.props;
         return (
@@ -77,8 +78,12 @@ class PreviewInputs extends React.PureComponent {
                                     control={<Radio color={"secondary"}/>}
                                 />
                             </RadioGroup>
-                            <FormControlLabel labelPlacement="start" control={<Checkbox value="checkedP" color={"primary"}/>} label="Primary Checkbox" />
-                            <FormControlLabel labelPlacement="start" control={<Checkbox value="checkedS" color={"secondary"}/>} label="Secondary Checkbox" />
+                            <FormControlLabel labelPlacement="start"
+                                              control={<Checkbox value="checkedP" color={"primary"}/>}
+                                              label="Primary Checkbox"/>
+                            <FormControlLabel labelPlacement="start"
+                                              control={<Checkbox value="checkedS" color={"secondary"}/>}
+                                              label="Secondary Checkbox"/>
                         </FormControl>
                     </div>
                     <div className={classes.root}>
@@ -93,7 +98,7 @@ class PreviewInputs extends React.PureComponent {
                                 step={1}
                                 min={0}
                                 max={100}
-                                style={{width : 150}}
+                                style={{width: 150}}
                             />
                         </div>
                         <div>
@@ -101,7 +106,9 @@ class PreviewInputs extends React.PureComponent {
                                 control={
                                     <Switch
                                         checked={this.state.checkedP}
-                                        onChange={(event)=>{this.setState({checkedP : event.target.checked})}}
+                                        onChange={(event) => {
+                                            this.setState({checkedP: event.target.checked})
+                                        }}
                                         value="checkedP"
                                         color="primary"
                                     />
@@ -114,7 +121,9 @@ class PreviewInputs extends React.PureComponent {
                                 control={
                                     <Switch
                                         checked={this.state.checkedS}
-                                        onChange={(event)=>{this.setState({checkedS : event.target.checked})}}
+                                        onChange={(event) => {
+                                            this.setState({checkedS: event.target.checked})
+                                        }}
                                         value="checkedS"
                                         color="secondary"
                                     />

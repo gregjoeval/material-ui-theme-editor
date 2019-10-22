@@ -8,10 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import SelectItem from "./SelectItem";
 import ColorEditionListItem from "./color-edition-list-item";
 import TextItem from "./TextItem";
-import {Divider, ListItem, ListItemText} from "@material-ui/core";
+import {Divider, ListItem} from "@material-ui/core";
 
 
-Object.byString = function(o, s) {
+Object.byString = function (o, s) {
     s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
     s = s.replace(/^\./, '');           // strip a leading dot
     let a = s.split('.');
@@ -26,8 +26,7 @@ Object.byString = function(o, s) {
     if (/^\d+\.\d+$/.test(o.toString())) {
         if (o.toString().includes(".")) {
             return parseFloat(o);
-        }
-        else {
+        } else {
             return parseInt(o);
         }
     }
@@ -52,8 +51,8 @@ class GenericCard extends React.PureComponent {
     render() {
         const {classes, rootClassName, label, fields} = this.props;
         return (
-            <Card className={cn(rootClassName, classes.root)} style={{height : "fit-content", display : "inline-table"}}>
-                <CardContent style={{paddingBottom : 6, paddingTop : 10}}>
+            <Card className={cn(rootClassName, classes.root)} style={{height: "fit-content", display: "inline-table"}}>
+                <CardContent style={{paddingBottom: 6, paddingTop: 10}}>
                     <Typography
                         variant={"subheading"}
                         color="textSecondary"
@@ -67,16 +66,15 @@ class GenericCard extends React.PureComponent {
                         if (item.type === "select") {
                             const {name, label, options, path} = item;
                             return <SelectItem
-                                    name={name}
-                                    label={label}
-                                    options={options}
-                                    onChange={this.handleChange}
-                                    value={Object.byString(this.props.theme, path)}
-                                    key={path}
-                                    path={path}
+                                name={name}
+                                label={label}
+                                options={options}
+                                onChange={this.handleChange}
+                                value={Object.byString(this.props.theme, path)}
+                                key={path}
+                                path={path}
                             />
-                        }
-                        else if (item.type === "color") {
+                        } else if (item.type === "color") {
                             const {name, label, path} = item;
                             return (
                                 <ColorEditionListItem
@@ -88,8 +86,7 @@ class GenericCard extends React.PureComponent {
                                     path={path}
                                 />
                             );
-                        }
-                        else if (item.type === "text") {
+                        } else if (item.type === "text") {
                             const {label, name, path} = item;
                             return (
                                 <TextItem
@@ -101,18 +98,17 @@ class GenericCard extends React.PureComponent {
                                     path={path}
                                 />
                             );
-                        }
-                        else if (item.type === "displayMessage") {
+                        } else if (item.type === "displayMessage") {
                             const {variant, color, message} = item;
                             return (
-                            <ListItem
-                            key={message.replace(" ", "")}
-                            style={{paddingTop : 0, paddingBottom : 0}}
-                            >
-                                <Typography variant={variant} color={color}>
-                                    {message}
-                                </Typography>
-                            </ListItem>
+                                <ListItem
+                                    key={message.replace(" ", "")}
+                                    style={{paddingTop: 0, paddingBottom: 0}}
+                                >
+                                    <Typography variant={variant} color={color}>
+                                        {message}
+                                    </Typography>
+                                </ListItem>
                             );
                         }
                     })}
@@ -121,4 +117,5 @@ class GenericCard extends React.PureComponent {
         );
     }
 }
+
 export default withStyles(styles)(GenericCard);

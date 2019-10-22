@@ -26,8 +26,8 @@ class PreviewBottomNavigation extends React.PureComponent {
                     value={0}
                 >
                     <BottomNavigationAction label="Recents" icon={<RestoreIcon/>}/>
-                    <BottomNavigationAction label="Favorites" icon={<FavoriteIcon/>}/>
-                    <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>}/>
+                    <BottomNavigationAction label="Favorites" icon={<FavoriteIcon color={"secondary"}/>}/>
+                    <BottomNavigationAction label="Nearby" icon={<LocationOnIcon color={"error"}/>}/>
                 </BottomNavigation>
             </div>
         );

@@ -27,7 +27,7 @@ class TextItem extends React.PureComponent {
                     id={path}
                     name={name}
                     value={value}
-                    onChange={(event)=>this.handleChange(path, event.target.value)}
+                    onChange={(event) => this.handleChange(path, event.target.value)}
                 />
             </ListItem>
         );
