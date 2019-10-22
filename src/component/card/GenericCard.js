@@ -40,6 +40,7 @@ const styles = (theme) => ({
     },
     title: {
         fontSize: 14,
+
     },
 });
 
@@ -51,7 +52,7 @@ class GenericCard extends React.PureComponent {
     render() {
         const {classes, rootClassName, label, fields} = this.props;
         return (
-            <Card className={cn(rootClassName, classes.root)} style={{height: "fit-content", display: "inline-table"}}>
+            <Card className={"card-area"} style={{height: "fit-content", display: "inline-table"}}>
                 <CardContent style={{paddingBottom: 6, paddingTop: 10}}>
                     <Typography
                         variant={"subheading"}

@@ -42,9 +42,16 @@ class UploadCard extends React.PureComponent {
     };
 
     render() {
-        const {classes, rootClassName} = this.props;
+        const style ={
+            padding : 0,
+            marginLeft : "5%",
+            width : "90%",
+            height: "fit-content",
+            display: "flex",
+            flexDirection : "column"
+        };
         return (
-            <Card className={cn(rootClassName, classes.root)} style={{height: "fit-content", display: "inline-table"}}>
+            <Card className={"card-area"} style={style}>
                 <CardContent>
                     <Typography
                         variant={"subheading"}

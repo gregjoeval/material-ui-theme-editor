@@ -380,7 +380,7 @@ class Editor extends React.PureComponent {
                     style={{textTransform: "capitalize"}}
                     onClick={() => this.props.onChange({})}
                 >Reset</Button>
-                <ExpansionPanel style={{backgroundColor: drawerTheme.palette.background.default}} square
+                <ExpansionPanel style={{backgroundColor: drawerTheme.palette.background.default, padding : 0}} square
                                 className={"sectionArea"}>
                     <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon/>}
@@ -390,7 +390,7 @@ class Editor extends React.PureComponent {
                             Edit Theme From JSON
                         </Typography>
                     </ExpansionPanelSummary>
-                    <ExpansionPanelDetails style={{display: "flex", flexDirection: "column", padding: 0}}>
+                    <ExpansionPanelDetails style={{ padding: 0, width : "100%"}}>
                         <UploadCard
                             rootClassName={classes.card}
                             onChange={this.handleLoadTheme}
