@@ -8,6 +8,11 @@ Click [here](https://in-your-saas.github.io/material-ui-theme-editor/) to access
 
 This is an extended version of [In-Your-Saas](https://github.com/in-your-saas)'s [material-ui-theme-editor](https://github.com/in-your-saas/material-ui-theme-editor)
 
+
+Click [here](https://in-your-saas.github.io/material-ui-theme-editor/) to access the original online
+
+or download and un-zip a build
+
 ***
 
 ## Added Features
