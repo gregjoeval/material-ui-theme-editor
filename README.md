@@ -1,8 +1,3 @@
-
-
-Click [here](https://in-your-saas.github.io/material-ui-theme-editor/) to access it
-
-
 # Material UI theme editor
 ***
 
