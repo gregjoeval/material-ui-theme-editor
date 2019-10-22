@@ -34,7 +34,7 @@ class ColorEditionListItem extends React.Component {
 
     handleChange = (color) => {
         const rgba = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
-        this.props.onChange(this.props.name, rgba);
+        this.props.onChange(this.props.path, rgba);
     };
 
     render() {

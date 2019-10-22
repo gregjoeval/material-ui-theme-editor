@@ -1,13 +1,13 @@
 import React from 'react';
-import cn from 'classnames';
 import {withStyles} from '@material-ui/core/styles';
-import PaletteEditionCardSelect from "./palette-edition-card-select";
-import ColorCard from "./card/ColorCard";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {Drawer, ExpansionPanelDetails} from "@material-ui/core";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import Typography from "@material-ui/core/Typography";
+import GenericCard from "./card/GenericCard";
 
-import Slide from "@material-ui/core/Slide";
-import {Drawer} from "@material-ui/core";
-import PaletteEditionCard from "./palette-edition-card";
-import SelectCard from "./card/SelectCard";
+
 const styles = (theme) => ({
     root: {
         overflowY: 'auto',
@@ -20,66 +20,180 @@ const styles = (theme) => ({
     },
 });
 
-const paletteFields = {
-    type: [
-        {label: "Type", name: "type", options: [{label: "Light", value: "light"}, {label: "Dark", value: "dark"}]}
-    ],
-    common: [
-        {label: 'Black', name: 'black'},
-        {label: 'White', name: 'white'},
-    ],
-    background: [
-        {label: 'Paper', name: 'paper'},
-        {label: 'Default', name: 'default'},
-    ],
-    primary: [
-        {label: 'Main', name: 'main'},
-        {label: 'Light', name: 'light'},
-        {label: 'Dark', name: 'dark'},
-        {label: 'Contrast text', name: 'contrastText'},
-    ],
-    secondary: [
-        {label: 'Main', name: 'main'},
-        {label: 'Light', name: 'light'},
-        {label: 'Dark', name: 'dark'},
-        {label: 'Contrast text', name: 'contrastText'},
-    ],
-    error: [
-        {label: 'Main', name: 'main'},
-        {label: 'Light', name: 'light'},
-        {label: 'Dark', name: 'dark'},
-        {label: 'Contrast text', name: 'contrastText'},
-    ],
-    text: [
-        {label: 'Primary', name: 'primary'},
-        {label: 'Secondary', name: 'secondary'},
-        {label: 'Disabled', name: 'disabled'},
-        {label: 'Hint', name: 'hint'},
-    ],
-};
+const sections = [
+    {
+        section : "palette",
+        label : "Palette",
+        cards : [
+            {
+                label : "Palette Type",
+                name : "palette.type",
+                fields : [
+                    {type : "select", name : "type", label : "Type", path : "palette.type",
+                        options : [
+                            {label : "Light", value : "light"},
+                            {label : "Dark", value : "dark"}
+                        ]
+                    }
+                ]
+            },
+            {
+                label : "Common Colors",
+                name : "palette.common",
+                fields : [
+                    {section : "common", type : "color", name : "black", label : "Black", path : "palette.common.black"},
+                    {section : "common", type : "color", name : "white", label : "white", path : "palette.common.white"}
+                ]
+            },
+            {
+                label : "Background Colors",
+                name : "palette.background",
+                fields : [
+                    {section : "background", type : "color", name : "paper", label : "Paper", path : "palette.background.paper"},
+                    {section : "background", type : "color", name : "default", label : "Default" , path : "palette.background.default"}
+                ]
+            },
+            {
+                label : "Primary",
+                name : "palette.primary",
+                fields : [
+                    {section : "primary", type : "color", label: 'Main', name: 'main'                  , path : "palette.primary.main"},
+                    {section : "primary", type : "color", label: 'Light', name: 'light'                , path : "palette.primary.light"},
+                    {section : "primary", type : "color", label: 'Dark', name: 'dark'                  , path : "palette.primary.dark"},
+                    {section : "primary", type : "color", label: 'Contrast text', name: 'contrastText' , path : "palette.primary.contrastText"}
+                ]
+            },
+            {
+                label : "Secondary",
+                name : "palette.secondary",
+                fields : [
+                    {section : "secondary", type : "color", label: 'Main', name: 'main'                  , path : "palette.secondary.main"},
+                    {section : "secondary", type : "color", label: 'Light', name: 'light'                , path : "palette.secondary.light"},
+                    {section : "secondary", type : "color", label: 'Dark', name: 'dark'                  , path : "palette.secondary.dark"},
+                    {section : "secondary", type : "color", label: 'Contrast text', name: 'contrastText' , path : "palette.secondary.contrastText"}
+                ]
+            },
+            {
+                label : "Error",
+                name : "palette.error",
+                fields : [
+                    {section : "error", type : "color", label: 'Main', name: 'main'                  , path : "palette.error.main"},
+                    {section : "error", type : "color", label: 'Light', name: 'light'                , path : "palette.error.light"},
+                    {section : "error", type : "color", label: 'Dark', name: 'dark'                  , path : "palette.error.dark"},
+                    {section : "error", type : "color", label: 'Contrast Text', name: 'contrastText' , path : "palette.error.contrastText"}
+                ]
+            },
+            {
+                label : "Text",
+                name : "palette.text",
+                fields : [
+                    {section : "text", type : "color", label: 'Primary', name: 'primary'     , path : "palette.text.primary"},
+                    {section : "text", type : "color", label: 'Secondary', name: 'secondary' , path : "palette.text.secondary"},
+                    {section : "text", type : "color", label: 'Disabled', name: 'disabled'   , path : "palette.text.disabled"},
+                    {section : "text", type : "color", label: 'Hint', name: 'hint'           , path : "palette.text.hint"}
+                ]
+            },
+            {
+                label : "Grey",
+                name : "palette.grey",
+                fields : [
+                    {section: "grey", type : "color", path : "palette.grey.50", label : "50", name : 50},
+                    {section: "grey", type : "color", path : "palette.grey.100", label : "100", name : 100},
+                    {section: "grey", type : "color", path : "palette.grey.200", label : "200", name : 200},
+                    {section: "grey", type : "color", path : "palette.grey.300", label : "300", name : 300},
+                    {section: "grey", type : "color", path : "palette.grey.400", label : "400", name : 400},
+                    {section: "grey", type : "color", path : "palette.grey.500", label : "500", name : 500},
+                    {section: "grey", type : "color", path : "palette.grey.600", label : "600", name : 600},
+                    {section: "grey", type : "color", path : "palette.grey.700", label : "700", name : 700},
+                    {section: "grey", type : "color", path : "palette.grey.800", label : "800", name : 800},
+                    {section: "grey", type : "color", path : "palette.grey.900", label : "900", name : 900},
+                    {section: "grey", type : "color", path : "palette.grey.A100", label : "A100", name : "A100"},
+                    {section: "grey", type : "color", path : "palette.grey.A200", label : "A200", name : "A200"},
+                    {section: "grey", type : "color", path : "palette.grey.A400", label : "A400", name : "A400"},
+                    {section: "grey", type : "color", path : "palette.grey.A700", label : "A700", name : "A700"},
+                ]
+            },
+            {
+                label : "Action",
+                name : "palette.action",
+                fields : [
+                    {section : "action", path : "palette.action.active", label : "Active", name : "active", type : "color"},
+                    {section : "action", path : "palette.action.disabled", label : "Disabled", name : "disabled", type : "color"},
+                    {section : "action", path : "palette.action.over", label : "Hover", name : "over", type : "color"},
+                    {section : "action", path : "palette.action.hoverOpacity", label : "Hover Opacity", name : "hoverOpacity", type : "text"}
+                ]
+            }
+        ]
+    },
+    {
+        section : "shape",
+        label : "Shape",
+        cards: [
+            {
+                label : "Shape",
+                name : "shape.borderRadius",
+                fields : [
+                    {type : "text", path : "shape.borderRadius", label : "Border Radius", name : "borderRadius", section : "borderRadius"}
+                ]
+            }
+        ]
+    },
+    {
+        section : "transitions",
+        label : "Transitions",
+        cards : [
+            {
+                label : "Duration",
+                name : "transitions.duration",
+                fields : [
+                    {type : "text", path : "transitions.duration.shortest", label : "Shortest", name : "shortest", section : "transitions"},
+                    {type : "text", path : "transitions.duration.shorter", label : "Shorter", name : "shorter", section : "transitions"},
+                    {type : "text", path : "transitions.duration.short", label : "Short", name : "short", section : "transitions"},
+                    {type : "text", path : "transitions.duration.standard", label : "Standard", name : "standard", section : "transitions"},
+                    {type : "text", path : "transitions.duration.complex", label : "Complex", name : "complex", section : "transitions"},
+                    {type : "text", path : "transitions.duration.enteringScreen", label : "Entering Screen", name : "enteringScreen", section : "transitions"},
+                    {type : "text", path : "transitions.duration.leavingScreen", label : "leavingScreen", name : "shortest", section : "transitions"},
+                ]
+            },
+            {
+                label : "easing",
+                name : "transitions.easing",
+                fields : [
+                    {type : "text", section : "transitions", path : "transitions.easing.easeInOut", label : "Ease In Out", name : "easeInOut"},
+                    {type : "text", section : "transitions", path : "transitions.easing.easeOut", label : "Ease Out", name : "easeOut"},
+                    {type : "text", section : "transitions", path : "transitions.easing.easeIn", label : "Ease In", name : "easeIn"},
+                    {type : "text", section : "transitions", path : "transitions.easing.sharp", label : "Sharp", name : "sharp"}
+                ]
+            }
+        ]
+    }
+];
 
 class Editor extends React.PureComponent {
-
-    handleChangeTheme = (section = null, name, changes) => {
-        if (section !== null) {
-            this.props.onChange({
-                ...this.props.theme,
-                [section] : {
-                    ...this.props.theme[section],
-                    [name] : changes,
-                }
-            });
+    componentDidMount() {
+    }
+    handleChangeTheme = (path, changes) => {
+        let theme = this.props.theme;
+        if (/^\d+$/.test(changes)) {
+            changes = parseInt(changes)
+        }
+        this.setValue(theme, path.split("."), changes);
+        if (path === "palette.type") {
+            this.props.onChange(theme, true)
         }
         else {
-            this.props.onChange({
-                ...this.props.theme,
-                [name] : changes,
-            });
+            this.props.onChange(theme)
         }
     };
 
+    setValue = (object, path, value) => {
+        let target = path.slice(0, -1).reduce(function(obj, key) {
+            return (obj || {})[key];
+        }, object);
+        target[path[path.length-1]] = value;
+    };
     render() {
-        const {classes, rootClassName} = this.props;
+        const {classes} = this.props;
         return (
             <Drawer
                 open={this.props.open}
@@ -88,70 +202,36 @@ class Editor extends React.PureComponent {
                 SlideProps={{direction : "right"}}
                 PaperProps={{style : {width : 300, height : "100%"}}}
                 >
-                <SelectCard
-                    label={"Palette Type"}
-                    fields={paletteFields.type}
-                    palette={this.props.theme.palette.type}
-                    onChange={this.handleChangeTheme}
-                    rootClassName={classes.card}
-                    name="type"
-                    section={"palette"}
-
-                />
-                <ColorCard
-                    label="Common colors"
-                    name="common"
-                    fields={paletteFields.common}
-                    onChange={this.handleChangeTheme}
-                    palette={this.props.theme.palette.common}
-                    rootClassName={classes.card}
-                    section={"palette"}
-                />
-                <ColorCard
-                    label="Background colors"
-                    name="background"
-                    fields={paletteFields.background}
-                    onChange={this.handleChangeTheme}
-                    section={"palette"}
-                    palette={this.props.theme.palette.background}
-                    rootClassName={classes.card}
-                />
-                <ColorCard
-                    label="Primary colors"
-                    name="primary"
-                    fields={paletteFields.primary}
-                    onChange={this.handleChangeTheme}
-                    palette={this.props.theme.palette.primary}
-                    rootClassName={classes.card}
-                />
-                <ColorCard
-                    label="Secondary colors"
-                    name="secondary"
-                    fields={paletteFields.secondary}
-                    onChange={this.handleChangeTheme}
-                    section={"palette"}
-                    palette={this.props.theme.palette.secondary}
-                    rootClassName={classes.card}
-                />
-                <ColorCard
-                    label="Error colors"
-                    name="error"
-                    fields={paletteFields.error}
-                    onChange={this.handleChangeTheme}
-                    section={"palette"}
-                    palette={this.props.theme.palette.error}
-                    rootClassName={classes.card}
-                />
-                <ColorCard
-                    label="Text colors"
-                    name="text"
-                    fields={paletteFields.text}
-                    onChange={this.handleChangeTheme}
-                    section={"palette"}
-                    palette={this.props.theme.palette.text}
-                    rootClassName={classes.card}
-                />
-
+                {sections.map((item)=>{
+                    const {section, label, cards} = item;
+                    return (
+                        <ExpansionPanel style={{borderRadius : 0}} key={section}>
+                            <ExpansionPanelSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography className={classes.heading}>{label}</Typography>
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails style={{display : "flex", flexDirection : "column", padding : 0}}>
+                                {cards.map((item, i)=>{
+                                    const {label, fields, name} = item;
+                                    return (
+                                        <GenericCard
+                                            key={name + i}
+                                            label={label}
+                                            fields={fields}
+                                            section={section}
+                                            theme={this.props.theme}
+                                            onChange={this.handleChangeTheme}
+                                            rootClassName={classes.card}
+                                        />
+                                    );
+                                })}
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                    );
+                })}
             </Drawer>
         );
     }
