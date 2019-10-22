@@ -1,12 +1,15 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import {MuiThemeProvider, withStyles} from '@material-ui/core/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {Drawer, ExpansionPanelDetails} from "@material-ui/core";
+import {Button, Drawer, ExpansionPanelDetails} from "@material-ui/core";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import GenericCard from "./card/GenericCard";
+import {createMuiTheme} from "@material-ui/core/es/styles";
+import rawTheme from './EditorTheme'
 
+const drawerTheme = createMuiTheme(rawTheme);
 
 const styles = (theme) => ({
     root: {
@@ -202,44 +205,52 @@ class Editor extends React.PureComponent {
     render() {
         const {classes} = this.props;
         return (
-            <Drawer
-                open={this.props.open}
-                onClose={()=>{this.props.toggleEditor(false)}}
-                anchor="top"
-                SlideProps={{direction : "right"}}
-                PaperProps={{style : {width : 300, height : "100%"}}}
-                >
-                {sections.map((item)=>{
-                    const {section, label, cards} = item;
-                    return (
-                        <ExpansionPanel style={{borderRadius : 0}} key={section}>
-                            <ExpansionPanelSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography className={classes.heading}>{label}</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails style={{display : "flex", flexDirection : "column", padding : 0}}>
-                                {cards.map((item, i)=>{
-                                    const {label, fields, name} = item;
-                                    return (
-                                        <GenericCard
-                                            key={name + i}
-                                            label={label}
-                                            fields={fields}
-                                            section={section}
-                                            theme={this.props.theme}
-                                            onChange={this.handleChangeTheme}
-                                            rootClassName={classes.card}
-                                        />
-                                    );
-                                })}
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                    );
-                })}
-            </Drawer>
+            <MuiThemeProvider theme={drawerTheme}>
+                <Drawer
+                    open={this.props.open}
+                    onClose={()=>{this.props.toggleEditor(false)}}
+                    anchor="top"
+                    SlideProps={{direction : "right"}}
+                    PaperProps={{style : {width : 300, height : "100%", backgroundColor : drawerTheme.palette.background.paper}}}
+                    >
+                    <Button
+                    color={"secondary"}
+                    variant="contained"
+                    style={{textTransform : "capitalize"}}
+                    onClick={()=>this.props.onChange({})}
+                    >Reset</Button>
+                    {sections.map((item)=>{
+                        const {section, label, cards} = item;
+                        return (
+                            <ExpansionPanel style={{borderRadius : 0, marginTop : 0, marginBottom : 0, backgroundColor : drawerTheme.palette.background.default}} key={section} square>
+                                <ExpansionPanelSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography className={classes.heading}>{label}</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails style={{display : "flex", flexDirection : "column", padding : 0}}>
+                                    {cards.map((item, i)=>{
+                                        const {label, fields, name} = item;
+                                        return (
+                                            <GenericCard
+                                                key={name + i}
+                                                label={label}
+                                                fields={fields}
+                                                section={section}
+                                                theme={this.props.theme}
+                                                onChange={this.handleChangeTheme}
+                                                rootClassName={classes.card}
+                                            />
+                                        );
+                                    })}
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
+                        );
+                    })}
+                </Drawer>
+            </MuiThemeProvider>
         );
     }
 }

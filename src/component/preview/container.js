@@ -7,6 +7,8 @@ import PreviewAppBar from './app-bar';
 import PreviewBadge from './badge';
 import PreviewBottomNavigation from './bottom-navigation';
 import PreviewButton from './button';
+import PreviewInputs from './inputs'
+import {Divider} from "@material-ui/core";
 
 const styles = (theme) => ({
     root: {
@@ -20,9 +22,14 @@ class PreviewContainer extends React.PureComponent {
         return (
             <Paper className={cn(classes.root, className)}>
                 <PreviewAppBar/>
+                <Divider/>
                 <PreviewBadge/>
+                <Divider/>
                 <PreviewBottomNavigation/>
+                <Divider/>
                 <PreviewButton/>
+                <Divider/>
+                <PreviewInputs/>
             </Paper>
         );
     }

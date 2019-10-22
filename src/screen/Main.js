@@ -41,13 +41,16 @@ class Main extends React.Component {
     }
 
     handleChangeTheme = (theme, swapPalette = false) => {
-        console.log("NEW THEME : ", theme);
         if (!swapPalette) {
             this.setState({theme : createMuiTheme(theme)});
         }
         else {
             this.setState({theme: createMuiTheme({palette: {type: theme.palette.type}})});
         }
+        setTimeout(()=>{
+            document.getElementById("root").style.backgroundColor = this.state.theme.palette.background.paper;
+            document.body.style.backgroundColor = this.state.theme.palette.background.paper;
+        }, 100)
     };
 
     handleChangeView = (view) => {
@@ -63,7 +66,7 @@ class Main extends React.Component {
         const {classes} = this.props;
         return (
             <div style={{flexGrow : 1}}>
-                <AppBar>
+                <AppBar style={{zIndex : 1101}}>
                     <Toolbar>
                         <IconButton
                             edge="start"
@@ -84,7 +87,7 @@ class Main extends React.Component {
                     toggleEditor={this.toggleEditor}
                     open={this.state.open}
                 />
-                <div className={classes.root} style={{marginTop : 20, width : "96%", marginLeft : "2%"}}>
+                <div className={classes.root} style={{marginTop : 64, width : "96%", marginLeft : "2%", backgroundColor : this.state.theme.palette.background.paper}}>
                     <SectionPreview
                         rootClassName={classes.preview}
                         onChange={this.handleChangeView}
