@@ -1,9 +1,7 @@
 import React from 'react';
 import {createMuiTheme, withStyles} from '@material-ui/core/styles';
-import SectionEdition from '../component/section-edition';
 import SectionPreview from '../component/section-preview';
 import DownloadButton from '../component/download-button';
-import GithubButton from '../component/github-button';
 import {AppBar, IconButton, Typography} from "@material-ui/core";
 import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from '@material-ui/icons/Menu';
@@ -30,33 +28,25 @@ const styles = (theme) => ({
     },
 });
 
-const defaultTheme = {
-    shape: {borderRadius: 0},
-    palette: {type: "dark"}
-};
-
-class Editor extends React.Component {
+class Main extends React.Component {
     state = {
         theme: createMuiTheme(),
         view: 'desktop',
         open : false,
     };
 
-    toggleType = (theme) => {
-        if (theme.palette.type !== this.state.theme.palette.type) {
-            this.setState({theme: createMuiTheme({palette: {type: theme.palette.type}})});
-            return true;
-        }
-        return false;
-    };
 
     componentDidMount() {
-        console.log(this.state.theme)
+
     }
 
-    handleChangeTheme = (theme) => {
-        if (!this.toggleType(theme)) {
-            this.setState({theme});
+    handleChangeTheme = (theme, swapPalette = false) => {
+        console.log("NEW THEME : ", theme);
+        if (!swapPalette) {
+            this.setState({theme : createMuiTheme(theme)});
+        }
+        else {
+            this.setState({theme: createMuiTheme({palette: {type: theme.palette.type}})});
         }
     };
 
@@ -95,11 +85,6 @@ class Editor extends React.Component {
                     open={this.state.open}
                 />
                 <div className={classes.root} style={{marginTop : 20, width : "96%", marginLeft : "2%"}}>
-{/*                    <SectionEdition
-                        rootClassName={classes.edition}
-                        onChange={this.handleChangeTheme}
-                        theme={this.state.theme}
-                    />*/}
                     <SectionPreview
                         rootClassName={classes.preview}
                         onChange={this.handleChangeView}
@@ -116,4 +101,4 @@ class Editor extends React.Component {
     }
 }
 
-export default withStyles(styles)(Editor);
+export default withStyles(styles)(Main);
