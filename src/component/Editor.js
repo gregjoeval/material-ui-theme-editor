@@ -10,7 +10,6 @@ import {createMuiTheme} from "@material-ui/core/es/styles";
 import rawTheme from './EditorTheme'
 
 const drawerTheme = createMuiTheme(rawTheme);
-
 const styles = (theme) => ({
     root: {
         overflowY: 'auto',
@@ -180,6 +179,7 @@ const sections = [
 ];
 
 class Editor extends React.PureComponent {
+
     componentDidMount() {
     }
     handleChangeTheme = (path, changes) => {
@@ -222,11 +222,12 @@ class Editor extends React.PureComponent {
                     {sections.map((item)=>{
                         const {section, label, cards} = item;
                         return (
-                            <ExpansionPanel style={{borderRadius : 0, marginTop : 0, marginBottom : 0, backgroundColor : drawerTheme.palette.background.default}} key={section} square>
+                            <ExpansionPanel style={{borderRadius : 0, backgroundColor : drawerTheme.palette.background.default}} key={section} square margin={"none"}>
                                 <ExpansionPanelSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1a-content"
                                     id="panel1a-header"
+                                    style={{height : "48px !important"}}
                                 >
                                     <Typography className={classes.heading}>{label}</Typography>
                                 </ExpansionPanelSummary>

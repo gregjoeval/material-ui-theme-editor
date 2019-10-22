@@ -18,3 +18,25 @@ body {
     max-height: 100% !important;
     overflow-y: scroll;
 }
+
+.MuiExpansionPanel-expanded-483 {
+    margin: 0 !important;
+}
+
+
+.MuiExpansionPanelSummary-root-485.MuiExpansionPanelSummary-expanded-486 {
+    min-height: 48px !important;
+    height: 48px !important;
+}
+
+.MuiExpansionPanel-expanded-483:before  {
+     display: none !important;
+ }
+
+ .MuiExpansionPanel-root-481:before {
+     display: none;
+ }
+
+.MuiExpansionPanelSummary-content-489 {
+    margin: 12px 0 !important;
+}

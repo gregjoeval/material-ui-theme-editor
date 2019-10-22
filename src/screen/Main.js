@@ -77,7 +77,7 @@ class Main extends React.Component {
                             />
                         </IconButton>
                         <Typography variant={"h6"} style={{flexGrow : 1, color : "white", textAlign : "center"}}>
-                            Material UI Builder
+                            Material UI Theme Builder
                         </Typography>
                     </Toolbar>
                 </AppBar>
