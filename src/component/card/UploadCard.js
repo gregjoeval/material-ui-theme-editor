@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import {Button, ListItem, TextField} from "@material-ui/core";
+import {Button, ListItem} from "@material-ui/core";
 
 
 
@@ -17,10 +17,32 @@ const styles = (theme) => ({
         fontSize: 14,
     },
 });
-
 class UploadCard extends React.PureComponent {
     handleChange = (path, value) => {
         this.props.onChange(path, value);
+    };
+    state = {
+        STRING : "",
+    };
+
+    storeString = (event) => {
+        const fileReader = new FileReader();
+        fileReader.readAsText(event.target.files[0]);
+        fileReader.onload = (ev) => {
+            this.setState({STRING : ev.target.result})
+        }
+    };
+
+    loadTheme = () => {
+        if (this.state.STRING !== "") {
+            try {
+                let theme = JSON.parse(this.state.STRING);
+                this.props.onChange(theme);
+            }
+            catch (e) {
+                console.log(e.toString())
+            }
+        }
     };
 
     render() {
@@ -37,15 +59,13 @@ class UploadCard extends React.PureComponent {
                 </CardContent>
                 <List dense>
                     <ListItem>
-                    <TextField
-                        type={"file"}
-                        label={".json file"}
-                    />
+                        <input type="file" accept=".json,application/json" id="jsonFileInput" onChange={this.storeString}/>
                     </ListItem>
                     <ListItem>
                         <Button
                             variant={"contained"}
                             color={"secondary"}
+                            onClick={this.loadTheme}
                         >
                             parse theme
                         </Button>

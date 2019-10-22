@@ -200,6 +200,10 @@ class Editor extends React.PureComponent {
         }
     };
 
+    handleLoadTheme = (theme) => {
+        this.props.onChange(theme);
+    };
+
     setValue = (object, path, value) => {
         let target = path.slice(0, -1).reduce(function(obj, key) {
             return (obj || {})[key];
@@ -235,6 +239,7 @@ class Editor extends React.PureComponent {
                         <ExpansionPanelDetails style={{display : "flex", flexDirection : "column", padding : 0}}>
                             <UploadCard
                                 rootClassName={classes.card}
+                                onChange={this.handleLoadTheme}
                             >
                             </UploadCard>
                         </ExpansionPanelDetails>
