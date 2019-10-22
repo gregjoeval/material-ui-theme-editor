@@ -11,7 +11,7 @@ import TextItem from "./TextItem";
 
 
 Object.byString = function(o, s) {
-    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+    s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
     s = s.replace(/^\./, '');           // strip a leading dot
     var a = s.split('.');
     for (var i = 0, n = a.length; i < n; ++i) {
@@ -55,7 +55,7 @@ class GenericCard extends React.PureComponent {
             <Card className={cn(rootClassName, classes.root)} style={{height : "fit-content", display : "inline-table"}}>
                 <CardContent>
                     <Typography
-                        className={classes.title}
+                        variant={"subheading"}
                         color="textSecondary"
                     >
                         {label}

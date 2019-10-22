@@ -232,7 +232,7 @@ class Editor extends React.PureComponent {
                             expandIcon={<ExpandMoreIcon />}
                             className={"sectionTitle"}
                         >
-                            <Typography className={classes.heading}>
+                            <Typography variant={"subtitle2"} >
                                 Edit Theme From JSON
                             </Typography>
                         </ExpansionPanelSummary>
@@ -253,7 +253,7 @@ class Editor extends React.PureComponent {
                                     className={"sectionTitle"}
 
                                 >
-                                    <Typography className={classes.heading}>{label}</Typography>
+                                    <Typography variant={"subtitle2"}>{label}</Typography>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails style={{display : "flex", flexDirection : "column", padding : 0}}>
                                     {cards.map((item, i)=>{

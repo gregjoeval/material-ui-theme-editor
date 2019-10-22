@@ -18,9 +18,6 @@ const styles = (theme) => ({
     },
 });
 class UploadCard extends React.PureComponent {
-    handleChange = (path, value) => {
-        this.props.onChange(path, value);
-    };
     state = {
         STRING : "",
     };
@@ -51,7 +48,7 @@ class UploadCard extends React.PureComponent {
             <Card className={cn(rootClassName, classes.root)} style={{height : "fit-content", display : "inline-table"}}>
                 <CardContent>
                     <Typography
-                        className={classes.title}
+                        variant={"subheading"}
                         color="textSecondary"
                     >
                         Select File
@@ -59,7 +56,7 @@ class UploadCard extends React.PureComponent {
                 </CardContent>
                 <List dense>
                     <ListItem>
-                        <input type="file" accept=".json,application/json" id="jsonFileInput" onChange={this.storeString}/>
+                        <input style={{color : "white"}} type="file" accept=".json,application/json" id="jsonFileInput" onChange={this.storeString}/>
                     </ListItem>
                     <ListItem>
                         <Button

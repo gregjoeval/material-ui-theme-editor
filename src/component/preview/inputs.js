@@ -39,7 +39,7 @@ class PreviewInputs extends React.PureComponent {
                             variant="outlined"
                         />
                         <TextField
-                            label="Outlined Text Field"
+                            label="Filled Text Field"
                             margin="normal"
                             variant="filled"
                         />

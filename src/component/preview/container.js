@@ -9,6 +9,8 @@ import PreviewBottomNavigation from './bottom-navigation';
 import PreviewButton from './button';
 import PreviewInputs from './inputs'
 import {Divider} from "@material-ui/core";
+import Card from './card'
+
 
 const styles = (theme) => ({
     root: {
@@ -30,6 +32,8 @@ class PreviewContainer extends React.PureComponent {
                 <PreviewButton/>
                 <Divider/>
                 <PreviewInputs/>
+                <Divider/>
+                <Card/>
             </Paper>
         );
     }
