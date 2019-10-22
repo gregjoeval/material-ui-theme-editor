@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import SelectItem from "./SelectItem";
 import ColorEditionListItem from "./color-edition-list-item";
 import TextItem from "./TextItem";
+import {Divider, ListItem, ListItemText} from "@material-ui/core";
 
 
 Object.byString = function(o, s) {
@@ -52,7 +53,7 @@ class GenericCard extends React.PureComponent {
         const {classes, rootClassName, label, fields} = this.props;
         return (
             <Card className={cn(rootClassName, classes.root)} style={{height : "fit-content", display : "inline-table"}}>
-                <CardContent>
+                <CardContent style={{paddingBottom : 6, paddingTop : 10}}>
                     <Typography
                         variant={"subheading"}
                         color="textSecondary"
@@ -60,6 +61,7 @@ class GenericCard extends React.PureComponent {
                         {label}
                     </Typography>
                 </CardContent>
+                <Divider/>
                 <List dense>
                     {fields.map(item => {
                         if (item.type === "select") {
@@ -100,8 +102,18 @@ class GenericCard extends React.PureComponent {
                                 />
                             );
                         }
-                        else {
-                            return null;
+                        else if (item.type === "displayMessage") {
+                            const {variant, color, message} = item;
+                            return (
+                            <ListItem
+                            key={message.replace(" ", "")}
+                            style={{paddingTop : 0, paddingBottom : 0}}
+                            >
+                                <Typography variant={variant} color={color}>
+                                    {message}
+                                </Typography>
+                            </ListItem>
+                            );
                         }
                     })}
                 </List>

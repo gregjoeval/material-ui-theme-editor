@@ -32,6 +32,19 @@ const sections = [
                 label : "Palette Type",
                 name : "palette.type",
                 fields : [
+                    {
+
+                        type : "displayMessage",
+                        variant : "subheading",
+                        color : "error",
+                        message : "!! Warning !!"
+                    },
+                    {
+                        type : "displayMessage",
+                        variant : "subheading",
+                        color : "textSecondary",
+                        message : "This will reset your current theme"
+                    },
                     {type : "select", name : "type", label : "Type", path : "palette.type",
                         options : [
                             {label : "Light", value : "light"},
@@ -166,7 +179,7 @@ const sections = [
                 ]
             },
             {
-                label : "easing",
+                label : "Easing",
                 name : "transitions.easing",
                 fields : [
                     {type : "text", section : "transitions", path : "transitions.easing.easeInOut", label : "Ease In Out", name : "easeInOut"},
@@ -215,6 +228,7 @@ class Editor extends React.PureComponent {
         return (
             <MuiThemeProvider theme={drawerTheme}>
                 <Drawer
+                    keepMounted
                     open={this.props.open}
                     onClose={()=>{this.props.toggleEditor(false)}}
                     anchor="top"
