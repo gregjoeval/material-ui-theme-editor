@@ -187,6 +187,9 @@ class Editor extends React.PureComponent {
         if (/^\d+$/.test(changes)) {
             changes = parseInt(changes)
         }
+        else if (/^-?\d+(?:[.,]\d*?)?$/.test(changes)) {
+            changes = parseFloat(changes)
+        }
         this.setValue(theme, path.split("."), changes);
         if (path === "palette.type") {
             this.props.onChange(theme, true)
