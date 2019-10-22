@@ -114,6 +114,13 @@ const sections = [
                 ]
             },
             {
+                label : "Divider",
+                name : "palette.divider",
+                fields : [
+                    {section : "palette", label : "Divider", name : "divider", type : "color", path : "palette.divider"}
+                ]
+            },
+            {
                 label : "Action",
                 name : "palette.action",
                 fields : [
