@@ -37,7 +37,7 @@ Added Some inputs and a display peice.
  * JSON editor (to edit the theme directly)
  * Editor section to handle shadows
 
-
+---
 
 To integrate a theme into you're project, you just have to do the following
 
