@@ -63,8 +63,9 @@ class UploadCard extends React.PureComponent {
                             variant={"contained"}
                             color={"secondary"}
                             onClick={this.loadTheme}
+                            style={{textTransform : "capitalize"}}
                         >
-                            parse theme
+                            load theme
                         </Button>
                     </ListItem>
                 </List>
