@@ -222,12 +222,11 @@ class Editor extends React.PureComponent {
                     {sections.map((item)=>{
                         const {section, label, cards} = item;
                         return (
-                            <ExpansionPanel style={{borderRadius : 0, backgroundColor : drawerTheme.palette.background.default}} key={section} square margin={"none"}>
+                            <ExpansionPanel style={{backgroundColor : drawerTheme.palette.background.default}} key={section} square className={"sectionArea"}>
                                 <ExpansionPanelSummary
                                     expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                    style={{height : "48px !important"}}
+                                    className={"sectionTitle"}
+
                                 >
                                     <Typography className={classes.heading}>{label}</Typography>
                                 </ExpansionPanelSummary>

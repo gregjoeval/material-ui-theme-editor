@@ -19,24 +19,16 @@ body {
     overflow-y: scroll;
 }
 
-.MuiExpansionPanel-expanded-483 {
+.sectionArea {
     margin: 0 !important;
+    border-radius : 0 !important;;
 }
 
+.sectionArea:before {
+    opacity: 1 !important;
+}
 
-.MuiExpansionPanelSummary-root-485.MuiExpansionPanelSummary-expanded-486 {
+.sectionTitle {
     min-height: 48px !important;
     height: 48px !important;
-}
-
-.MuiExpansionPanel-expanded-483:before  {
-     display: none !important;
- }
-
- .MuiExpansionPanel-root-481:before {
-     display: none;
- }
-
-.MuiExpansionPanelSummary-content-489 {
-    margin: 12px 0 !important;
 }
