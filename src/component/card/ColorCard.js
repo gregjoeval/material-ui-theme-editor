@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 
 import ColorEditionListItem from './color-edition-list-item';
+import TextCard from "./TextCard";
 
 const styles = (theme) => ({
     root: {
@@ -17,9 +18,9 @@ const styles = (theme) => ({
     },
 });
 
-class PaletteEditionCard extends React.PureComponent {
+class ColorCard extends React.PureComponent {
     handleChange = (name, value) => {
-        this.props.onChange(this.props.name, {
+        this.props.onChange(this.props.section, this.props.name, {
             ...this.props.palette,
             [name]: value,
         });
@@ -28,7 +29,7 @@ class PaletteEditionCard extends React.PureComponent {
     render() {
         const {classes, palette, rootClassName, label, fields} = this.props;
         return (
-            <Card className={cn(rootClassName, classes.root)}>
+            <Card className={cn(rootClassName, classes.root)} style={{height : "fit-content", display : "inline-table"}}>
                 <CardContent>
                     <Typography
                         className={classes.title}
@@ -52,5 +53,4 @@ class PaletteEditionCard extends React.PureComponent {
         );
     }
 }
-
-export default withStyles(styles)(PaletteEditionCard);
+export default withStyles(styles)(ColorCard);

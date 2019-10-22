@@ -1,11 +1,13 @@
 import React from 'react';
 import cn from 'classnames';
 import {withStyles} from '@material-ui/core/styles';
-
-import LogoButton from './logo-button';
-import PaletteEditionCard from './palette-edition-card';
 import PaletteEditionCardSelect from "./palette-edition-card-select";
+import ColorCard from "./card/ColorCard";
 
+import Slide from "@material-ui/core/Slide";
+import {Drawer} from "@material-ui/core";
+import PaletteEditionCard from "./palette-edition-card";
+import SelectCard from "./card/SelectCard";
 const styles = (theme) => ({
     root: {
         overflowY: 'auto',
@@ -56,16 +58,7 @@ const paletteFields = {
     ],
 };
 
-class SectionEdition extends React.PureComponent {
-    handleChangePalette = (name, changes) => {
-        this.props.onChange({
-            ...this.props.theme,
-            palette: {
-                ...this.props.theme.palette,
-                [name]: changes,
-            },
-        });
-    };
+class Editor extends React.PureComponent {
 
     handleChangeTheme = (section = null, name, changes) => {
         if (section !== null) {
@@ -88,69 +81,80 @@ class SectionEdition extends React.PureComponent {
     render() {
         const {classes, rootClassName} = this.props;
         return (
-            <aside className={cn(classes.root, rootClassName)}>
-                <LogoButton/>
-                <PaletteEditionCardSelect
+            <Drawer
+                open={this.props.open}
+                onClose={()=>{this.props.toggleEditor(false)}}
+                anchor="top"
+                SlideProps={{direction : "right"}}
+                PaperProps={{style : {width : 300, height : "100%"}}}
+                >
+                <SelectCard
                     label={"Palette Type"}
                     fields={paletteFields.type}
                     palette={this.props.theme.palette.type}
                     onChange={this.handleChangeTheme}
                     rootClassName={classes.card}
                     name="type"
+                    section={"palette"}
+
                 />
-                <PaletteEditionCard
+                <ColorCard
                     label="Common colors"
                     name="common"
                     fields={paletteFields.common}
-                    onChange={this.handleChangePalette}
+                    onChange={this.handleChangeTheme}
                     palette={this.props.theme.palette.common}
                     rootClassName={classes.card}
+                    section={"palette"}
                 />
-                <PaletteEditionCard
+                <ColorCard
                     label="Background colors"
                     name="background"
                     fields={paletteFields.background}
-                    onChange={this.handleChangePalette}
+                    onChange={this.handleChangeTheme}
+                    section={"palette"}
                     palette={this.props.theme.palette.background}
                     rootClassName={classes.card}
                 />
-                <PaletteEditionCard
+                <ColorCard
                     label="Primary colors"
                     name="primary"
                     fields={paletteFields.primary}
-                    onChange={this.handleChangePalette}
+                    onChange={this.handleChangeTheme}
                     palette={this.props.theme.palette.primary}
                     rootClassName={classes.card}
                 />
-                <PaletteEditionCard
+                <ColorCard
                     label="Secondary colors"
                     name="secondary"
                     fields={paletteFields.secondary}
-                    onChange={this.handleChangePalette}
+                    onChange={this.handleChangeTheme}
+                    section={"palette"}
                     palette={this.props.theme.palette.secondary}
                     rootClassName={classes.card}
                 />
-                <PaletteEditionCard
+                <ColorCard
                     label="Error colors"
                     name="error"
                     fields={paletteFields.error}
-                    onChange={this.handleChangePalette}
+                    onChange={this.handleChangeTheme}
+                    section={"palette"}
                     palette={this.props.theme.palette.error}
                     rootClassName={classes.card}
                 />
-                <PaletteEditionCard
+                <ColorCard
                     label="Text colors"
                     name="text"
                     fields={paletteFields.text}
-                    onChange={this.handleChangePalette}
+                    onChange={this.handleChangeTheme}
+                    section={"palette"}
                     palette={this.props.theme.palette.text}
                     rootClassName={classes.card}
                 />
 
-
-            </aside>
+            </Drawer>
         );
     }
 }
 
-export default withStyles(styles)(SectionEdition);
+export default withStyles(styles)(Editor);

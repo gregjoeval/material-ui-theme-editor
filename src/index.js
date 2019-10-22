@@ -4,6 +4,6 @@ import './index.css';
 import Editor from './screen/editor';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Editor />, document.getElementById('root'));
+ReactDOM.render(<Editor/>, document.getElementById('root'));
 
 registerServiceWorker();
