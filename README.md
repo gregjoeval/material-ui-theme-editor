@@ -1,5 +1,5 @@
 # Material UI theme editor
-***
+
 
 This is an extended version of [In-Your-Saas](https://github.com/in-your-saas)'s [material-ui-theme-editor](https://github.com/in-your-saas/material-ui-theme-editor)
 
@@ -7,8 +7,6 @@ This is an extended version of [In-Your-Saas](https://github.com/in-your-saas)'s
 Click [here](https://in-your-saas.github.io/material-ui-theme-editor/) to access the original online
 
 or download and un-zip a build
-
-***
 
 ## Added Features
 
@@ -32,7 +30,6 @@ Added the ability to load a theme from a file
 ### Preview
 Added Some inputs and a display peice.
 
-***
 
 ## Future Feature List
  * Set name of file download
@@ -40,7 +37,7 @@ Added Some inputs and a display peice.
  * JSON editor (to edit the theme directly)
  * Editor section to handle shadows
 
-***
+
 
 To integrate a theme into you're project, you just have to do the following
 
