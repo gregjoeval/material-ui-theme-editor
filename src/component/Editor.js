@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import GenericCard from "./card/GenericCard";
 import {createMuiTheme} from "@material-ui/core/es/styles";
 import rawTheme from './EditorTheme'
+import UploadCard from "./card/UploadCard";
 
 const drawerTheme = createMuiTheme(rawTheme);
 const styles = (theme) => ({
@@ -222,6 +223,22 @@ class Editor extends React.PureComponent {
                     style={{textTransform : "capitalize"}}
                     onClick={()=>this.props.onChange({})}
                     >Reset</Button>
+                    <ExpansionPanel style={{backgroundColor : drawerTheme.palette.background.default}} square className={"sectionArea"}>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            className={"sectionTitle"}
+                        >
+                            <Typography className={classes.heading}>
+                                Edit Theme From JSON
+                            </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails style={{display : "flex", flexDirection : "column", padding : 0}}>
+                            <UploadCard
+                                rootClassName={classes.card}
+                            >
+                            </UploadCard>
+                        </ExpansionPanelDetails>
+                    </ExpansionPanel>
                     {sections.map((item)=>{
                         const {section, label, cards} = item;
                         return (
