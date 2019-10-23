@@ -25,7 +25,8 @@ or download and un-zip a build
   * Easing
   
 ### Editor Additions
-Added the ability to load a theme from a file
+ * Added the ability to load a theme from a file
+ * JSON editor to edit theme directly
 
 ### Preview
 Added Some inputs and a display peice.
@@ -34,7 +35,6 @@ Added Some inputs and a display peice.
 ## Future Feature List
  * Set name of file download
  * Swap between dark and light theme for the editor
- * JSON editor (to edit the theme directly)
  * Editor section to handle shadows
 
 ---
