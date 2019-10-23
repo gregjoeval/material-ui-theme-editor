@@ -1,6 +1,6 @@
 import React from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {Button, Drawer, ExpansionPanelDetails} from "@material-ui/core";
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Drawer, ExpansionPanelDetails, ListItem} from "@material-ui/core";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
@@ -8,8 +8,23 @@ import GenericCard from "./card/GenericCard";
 import {createMuiTheme, withStyles} from '@material-ui/core/styles';
 import rawTheme from './EditorTheme'
 import UploadCard from "./card/UploadCard";
+import Card from "@material-ui/core/Card";
+import List from "@material-ui/core/List";
+import JSONInput from 'react-json-editor-ajrm';
+import locale    from 'react-json-editor-ajrm/locale/en';
+
+
+const style ={
+    marginLeft : "5%",
+    width : "90%",
+    height: "fit-content",
+    display: "flex",
+    flexDirection : "column",
+    padding : 5,
+};
 
 const drawerTheme = createMuiTheme(rawTheme);
+
 const styles = (theme) => ({
     root: {
         overflowY: 'auto',
@@ -326,6 +341,11 @@ const sections = [
 
 class Editor extends React.PureComponent {
 
+    state = {
+        JSONDialog : false,
+        JSON : null,
+    };
+
     componentDidMount() {
     }
 
@@ -374,12 +394,15 @@ class Editor extends React.PureComponent {
                     }
                 }}
             >
+                {/*RESET BUTTON*/}
                 <Button
                     color={"secondary"}
                     variant="contained"
                     style={{textTransform: "capitalize"}}
                     onClick={() => this.props.onChange({})}
                 >Reset</Button>
+
+                {/*JSON FILE READER*/}
                 <ExpansionPanel style={{backgroundColor: drawerTheme.palette.background.default, padding : 0}} square
                                 className={"sectionArea"}>
                     <ExpansionPanelSummary
@@ -387,7 +410,7 @@ class Editor extends React.PureComponent {
                         className={"sectionTitle"}
                     >
                         <Typography variant={"subtitle2"}>
-                            Edit Theme From JSON
+                            Load JSON theme
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails style={{ padding: 0, width : "100%"}}>
@@ -398,6 +421,8 @@ class Editor extends React.PureComponent {
                         </UploadCard>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
+
+                {/*GENERIC SECTIONS*/}
                 {sections.map((item) => {
                     const {section, label, cards} = item;
                     return (
@@ -429,6 +454,50 @@ class Editor extends React.PureComponent {
                         </ExpansionPanel>
                     );
                 })}
+
+                <ExpansionPanel style={{backgroundColor: drawerTheme.palette.background.default, padding : 0}} square className={"sectionArea"}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>} className={"sectionTitle"}>
+                        <Typography variant={"subtitle2"}>
+                            Edit JSON
+                        </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails style={{ padding: 0, width : "100%"}}>
+                        <Card className={"card-area"} style={style}>
+                            <List dense>
+                                <ListItem>
+                                    <Typography variant={"body1"}>
+                                        You can use an inline editor to edit the theme directly. However this is not recomended
+                                    </Typography>
+                                </ListItem>
+                                <ListItem>
+                                    <Button onClick={()=>this.setState({JSONDialog : true})} variant={"contained"} color={"secondary"}>
+                                        Open Editor
+                                    </Button>
+                                </ListItem>
+                            </List>
+                        </Card>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+
+
+                <Dialog open={this.state.JSONDialog} onClose={()=>this.setState({JSONDialog : false})} >
+                    <DialogTitle>Edit Theme</DialogTitle>
+                    <DialogContent>
+                        <JSONInput
+                            id={'a_unique_id'}
+                            placeholder={ this.props.theme }
+                            theme={ "dark_vscode_tribute" }
+                            locale={ locale }
+                            height={'550px'}
+                            width={"550px"}
+                            onChange={(data)=>{ this.setState({JSON : data.jsObject}) }}
+                        />
+                    </DialogContent>
+                    <DialogActions style={{display : "flex", justifyContent : "space-between", width : "-webkit-fill-available", flexDirection : "row"}}>
+                        <Button variant={"contained"} onClick={()=>{this.setState({JSONDialog : false})}} color={"default"}>Close</Button>
+                        <Button variant={"contained"} color={"secondary"} onClick={()=>{this.handleLoadTheme(this.state.JSON); this.setState({JSONDialog : false})}} >Save To Theme</Button>
+                    </DialogActions>
+                </Dialog>
             </Drawer>
         );
     }
