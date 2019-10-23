@@ -69,6 +69,10 @@ class Editor extends React.PureComponent {
         this.props.onChange(theme);
     };
 
+    changeShadow = (location, value) => {
+        console.log(location, value)
+    };
+
     setValue = (object, path, value) => {
         let target = path.slice(0, -1).reduce(function (obj, key) {
             return (obj || {})[key];
@@ -121,12 +125,13 @@ class Editor extends React.PureComponent {
                                 const {label, fields, name} = item;
                                 return (
                                     <GenericCard
-                                        key={name + i}
+                                        key={name}
                                         label={label}
                                         fields={fields}
                                         section={section}
                                         theme={this.props.theme}
                                         onChange={this.handleChangeTheme}
+                                        changeShadow={this.changeShadow}
                                         rootClassName={classes.card}
                                     />
                                 );

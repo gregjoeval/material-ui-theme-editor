@@ -9,6 +9,7 @@ import SelectItem from "./SelectItem";
 import ColorEditionListItem from "./color-edition-list-item";
 import TextItem from "./TextItem";
 import {Divider, ListItem} from "@material-ui/core";
+import ShadowItem from "./ShadowItem";
 
 
 Object.byString = function (o, s) {
@@ -34,6 +35,8 @@ Object.byString = function (o, s) {
     return o;
 };
 
+
+
 const styles = (theme) => ({
     root: {
         paddingBottom: theme.spacing.unit,
@@ -47,6 +50,10 @@ const styles = (theme) => ({
 class GenericCard extends React.PureComponent {
     handleChange = (path, value) => {
         this.props.onChange(path, value);
+    };
+
+    shadowValue = (location) => {
+        return this.props.theme.shadows[location]
     };
 
     render() {
@@ -110,6 +117,16 @@ class GenericCard extends React.PureComponent {
                                         {message}
                                     </Typography>
                                 </ListItem>
+                            );
+                        } else if (item.type === "shadow") {
+                            const {location} = item;
+                            console.log("SHADOW ITEM = ", item)
+                            return (
+                                <ShadowItem
+                                onChange={this.props.changeShadow}
+                                value={this.shadowValue(location)}
+                                location={location}
+                                />
                             );
                         }
                         else return null;
