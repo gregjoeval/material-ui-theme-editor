@@ -108,7 +108,8 @@ class Editor extends React.PureComponent {
                 >Reset</Button>
 
                 {/*JSON FILE READER*/}
-                <MenuSection backgroundColor={this.props.drawerTheme.palette.background.default} title={"Load JSON theme"}>
+                <MenuSection backgroundColor={this.props.drawerTheme.palette.background.default}
+                             title={"Load JSON theme"}>
                     <UploadCard
                         rootClassName={classes.card}
                         onChange={this.handleLoadTheme}
@@ -120,12 +121,13 @@ class Editor extends React.PureComponent {
                 {sections.map((item) => {
                     const {section, label, cards} = item;
                     return (
-                        <MenuSection backgroundColor={this.props.drawerTheme.palette.background.default} title={label} key={section}>
-                            {cards.map((item, i) => {
+                        <MenuSection backgroundColor={this.props.drawerTheme.palette.background.default} title={label}
+                                     key={section}>
+                            {cards.map((item) => {
                                 const {label, fields, name} = item;
                                 return (
                                     <GenericCard
-                                        key={name}
+                                        key={name + label.replace(" ", "")}
                                         label={label}
                                         fields={fields}
                                         section={section}
@@ -146,11 +148,13 @@ class Editor extends React.PureComponent {
                         <List dense>
                             <ListItem>
                                 <Typography variant={"body1"}>
-                                    You can use an inline editor to edit the theme directly. However this is not recommended
+                                    You can use an inline editor to edit the theme directly. However this is not
+                                    recommended
                                 </Typography>
                             </ListItem>
                             <ListItem>
-                                <Button onClick={() => this.setState({JSONDialog: true})} variant={"contained"} color={"secondary"}>
+                                <Button onClick={() => this.setState({JSONDialog: true})} variant={"contained"}
+                                        color={"secondary"}>
                                     Open Editor
                                 </Button>
                             </ListItem>
@@ -174,7 +178,12 @@ class Editor extends React.PureComponent {
                             }}
                         />
                     </DialogContent>
-                    <DialogActions style={{display: "flex", justifyContent: "space-between", width: "-webkit-fill-available", flexDirection: "row"}}>
+                    <DialogActions style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "-webkit-fill-available",
+                        flexDirection: "row"
+                    }}>
                         <Button variant={"contained"} onClick={() => {
                             this.setState({JSONDialog: false})
                         }} color={"default"}>Close</Button>
@@ -198,7 +207,9 @@ class Editor extends React.PureComponent {
                                     <Select
                                         autoWidth={true}
                                         value={this.props.drawerThemeType}
-                                        onChange={(event)=>{this.props.setEditorTheme(event.target.value)}}
+                                        onChange={(event) => {
+                                            this.props.setEditorTheme(event.target.value)
+                                        }}
                                         id={"EditorThemeSEL"}>
                                         <MenuItem value={"dark"}>Dark</MenuItem>
                                         <MenuItem value={"light"}>Light</MenuItem>

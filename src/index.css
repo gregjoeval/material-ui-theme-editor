@@ -38,3 +38,8 @@ body {
     margin-left: 5%;
     margin-bottom: 10px;
 }
+
+.shadow-size > input {
+    padding: 2px !important;
+    text-align: center;
+}

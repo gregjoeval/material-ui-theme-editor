@@ -36,7 +36,6 @@ Object.byString = function (o, s) {
 };
 
 
-
 const styles = (theme) => ({
     root: {
         paddingBottom: theme.spacing.unit,
@@ -120,16 +119,16 @@ class GenericCard extends React.PureComponent {
                             );
                         } else if (item.type === "shadow") {
                             const {location} = item;
-                            console.log("SHADOW ITEM = ", item)
+                            const key = "shadow_" + location.toString();
                             return (
                                 <ShadowItem
-                                onChange={this.props.changeShadow}
-                                value={this.shadowValue(location)}
-                                location={location}
+                                    onChange={this.props.changeShadow}
+                                    value={this.shadowValue(location)}
+                                    location={location}
+                                    key={key}
                                 />
                             );
-                        }
-                        else return null;
+                        } else return null;
                     })}
                 </List>
             </Card>

@@ -39,7 +39,7 @@ class Main extends React.Component {
         view: 'desktop',
         open: false,
         fileName: "theme",
-        drawerTheme : "dark",
+        drawerTheme: "dark",
     };
 
 
@@ -79,7 +79,7 @@ class Main extends React.Component {
     };
 
     setEditorTheme = type => {
-        this.setState({drawerTheme : type})
+        this.setState({drawerTheme: type})
     };
 
     render() {

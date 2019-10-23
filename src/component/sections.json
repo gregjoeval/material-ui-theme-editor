@@ -481,34 +481,225 @@
     ]
   },
   {
-    "section" : "shadows",
-    "label" : "Shadows",
-    "cards" : [
-      {"label" : "Shadow 0", "fields" : [ {"type" : "shadow", "location" : 0}]},
-      {"label" : "Shadow 1", "fields" : [ {"type" : "shadow", "location" : 1}]},
-      {"label" : "Shadow 2", "fields" : [ {"type" : "shadow", "location" : 2}]},
-      {"label" : "Shadow 3", "fields" : [ {"type" : "shadow", "location" : 3}]},
-      {"label" : "Shadow 4", "fields" : [ {"type" : "shadow", "location" : 4}]},
-      {"label" : "Shadow 5", "fields" : [ {"type" : "shadow", "location" : 5}]},
-      {"label" : "Shadow 6", "fields" : [ {"type" : "shadow", "location" : 6}]},
-      {"label" : "Shadow 7", "fields" : [ {"type" : "shadow", "location" : 7}]},
-      {"label" : "Shadow 8", "fields" : [ {"type" : "shadow", "location" : 8}]},
-      {"label" : "Shadow 9", "fields" : [ {"type" : "shadow", "location" : 9}]},
-      {"label" : "Shadow 10", "fields" : [ {"type" : "shadow", "location" : 10}]},
-      {"label" : "Shadow 11", "fields" : [ {"type" : "shadow", "location" : 11}]},
-      {"label" : "Shadow 12", "fields" : [ {"type" : "shadow", "location" : 12}]},
-      {"label" : "Shadow 13", "fields" : [ {"type" : "shadow", "location" : 13}]},
-      {"label" : "Shadow 14", "fields" : [ {"type" : "shadow", "location" : 14}]},
-      {"label" : "Shadow 15", "fields" : [ {"type" : "shadow", "location" : 15}]},
-      {"label" : "Shadow 16", "fields" : [ {"type" : "shadow", "location" : 16}]},
-      {"label" : "Shadow 17", "fields" : [ {"type" : "shadow", "location" : 17}]},
-      {"label" : "Shadow 18", "fields" : [ {"type" : "shadow", "location" : 18}]},
-      {"label" : "Shadow 19", "fields" : [ {"type" : "shadow", "location" : 19}]},
-      {"label" : "Shadow 20", "fields" : [ {"type" : "shadow", "location" : 20}]},
-      {"label" : "Shadow 21", "fields" : [ {"type" : "shadow", "location" : 21}]},
-      {"label" : "Shadow 22", "fields" : [ {"type" : "shadow", "location" : 22}]},
-      {"label" : "Shadow 23", "fields" : [ {"type" : "shadow", "location" : 23}]},
-      {"label" : "Shadow 24", "fields" : [ {"type" : "shadow", "location" : 24}]}
+    "section": "shadows",
+    "label": "Shadows",
+    "cards": [
+      {
+        "label": "Shadow 1",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 1
+          }
+        ]
+      },
+      {
+        "label": "Shadow 2",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 2
+          }
+        ]
+      },
+      {
+        "label": "Shadow 3",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 3
+          }
+        ]
+      },
+      {
+        "label": "Shadow 4",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 4
+          }
+        ]
+      },
+      {
+        "label": "Shadow 5",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 5
+          }
+        ]
+      },
+      {
+        "label": "Shadow 6",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 6
+          }
+        ]
+      },
+      {
+        "label": "Shadow 7",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 7
+          }
+        ]
+      },
+      {
+        "label": "Shadow 8",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 8
+          }
+        ]
+      },
+      {
+        "label": "Shadow 9",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 9
+          }
+        ]
+      },
+      {
+        "label": "Shadow 10",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 10
+          }
+        ]
+      },
+      {
+        "label": "Shadow 11",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 11
+          }
+        ]
+      },
+      {
+        "label": "Shadow 12",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 12
+          }
+        ]
+      },
+      {
+        "label": "Shadow 13",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 13
+          }
+        ]
+      },
+      {
+        "label": "Shadow 14",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 14
+          }
+        ]
+      },
+      {
+        "label": "Shadow 15",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 15
+          }
+        ]
+      },
+      {
+        "label": "Shadow 16",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 16
+          }
+        ]
+      },
+      {
+        "label": "Shadow 17",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 17
+          }
+        ]
+      },
+      {
+        "label": "Shadow 18",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 18
+          }
+        ]
+      },
+      {
+        "label": "Shadow 19",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 19
+          }
+        ]
+      },
+      {
+        "label": "Shadow 20",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 20
+          }
+        ]
+      },
+      {
+        "label": "Shadow 21",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 21
+          }
+        ]
+      },
+      {
+        "label": "Shadow 22",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 22
+          }
+        ]
+      },
+      {
+        "label": "Shadow 23",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 23
+          }
+        ]
+      },
+      {
+        "label": "Shadow 24",
+        "fields": [
+          {
+            "type": "shadow",
+            "location": 24
+          }
+        ]
+      }
     ]
   }
 ]
