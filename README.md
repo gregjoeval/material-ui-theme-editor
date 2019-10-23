@@ -4,10 +4,8 @@
 This is an extended version of [In-Your-Saas](https://github.com/in-your-saas)'s [material-ui-theme-editor](https://github.com/in-your-saas/material-ui-theme-editor)
 
 
-Click [here](https://in-your-saas.github.io/material-ui-theme-editor/) to access the original online
 
-
-Unfortunately I dont have any server hosting hold the app but you can run it [here](https://stackblitz.com/github/chris9540/material-ui-theme-editor)
+Click [here](https://chris9540.github.io/material-ui-theme-editor) to run the editor.
 
 or download and un-zip a build
 
