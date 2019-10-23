@@ -10,6 +10,7 @@ import PreviewButton from './button';
 import PreviewInputs from './inputs'
 import {Divider} from "@material-ui/core";
 import Card from './card'
+import PreviewElevation from "./elevation";
 
 
 const styles = (theme) => ({
@@ -34,6 +35,8 @@ class PreviewContainer extends React.PureComponent {
                 <PreviewInputs/>
                 <Divider/>
                 <Card/>
+                <Divider/>
+                <PreviewElevation/>
             </Paper>
         );
     }
