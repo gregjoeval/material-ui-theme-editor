@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -50,7 +50,7 @@ class GenericCard extends React.PureComponent {
     };
 
     render() {
-        const {classes, rootClassName, label, fields} = this.props;
+        const {label, fields} = this.props;
         return (
             <Card className={"card-area"} style={{height: "fit-content", display: "inline-table"}}>
                 <CardContent style={{paddingBottom: 6, paddingTop: 10}}>
@@ -66,7 +66,7 @@ class GenericCard extends React.PureComponent {
                     {fields.map(item => {
                         if (item.type === "select") {
                             const {name, label, options, path} = item;
-                            return <SelectItem
+                            return (<SelectItem
                                 name={name}
                                 label={label}
                                 options={options}
@@ -74,7 +74,7 @@ class GenericCard extends React.PureComponent {
                                 value={Object.byString(this.props.theme, path)}
                                 key={path}
                                 path={path}
-                            />
+                            />);
                         } else if (item.type === "color") {
                             const {name, label, path} = item;
                             return (
@@ -112,6 +112,7 @@ class GenericCard extends React.PureComponent {
                                 </ListItem>
                             );
                         }
+                        else return null;
                     })}
                 </List>
             </Card>

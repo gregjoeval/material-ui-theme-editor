@@ -6,9 +6,11 @@ import {AppBar, IconButton, Typography} from "@material-ui/core";
 import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from "../component/Editor";
-import rawTheme from '../component/EditorTheme'
 
-const EditorTheme = createMuiTheme(rawTheme);
+import darkTheme from '../component/EditorDarkTheme'
+import lightTheme from '../component/EditorLightTheme'
+
+
 const styles = (theme) => ({
     root: {
         backgroundColor: theme.palette.background.default,
@@ -36,7 +38,8 @@ class Main extends React.Component {
         theme: createMuiTheme(),
         view: 'desktop',
         open: false,
-        fileName : "theme",
+        fileName: "theme",
+        drawerTheme : "dark",
     };
 
 
@@ -65,12 +68,23 @@ class Main extends React.Component {
     };
 
     handleFileName = fileName => {
-        this.setState({fileName : fileName})
+        this.setState({fileName: fileName})
     };
 
+    getEditorTheme = () => {
+        if (this.state.drawerTheme === "light") {
+            return createMuiTheme(lightTheme);
+        }
+        return createMuiTheme(darkTheme);
+    };
+
+    setEditorTheme = type => {
+        this.setState({drawerTheme : type})
+    };
 
     render() {
         const {classes} = this.props;
+        const EditorTheme = this.getEditorTheme();
         return (
             <div style={{flexGrow: 1}}>
                 <MuiThemeProvider theme={EditorTheme}>
@@ -98,14 +112,17 @@ class Main extends React.Component {
                         open={this.state.open}
                         setFileName={this.handleFileName}
                         fileName={this.state.fileName}
+                        drawerTheme={EditorTheme}
+                        drawerThemeType={this.state.drawerTheme}
+                        setEditorTheme={this.setEditorTheme}
                     />
                 </MuiThemeProvider>
                 <div className={classes.root} style={{
                     marginTop: 64,
                     width: "96%",
                     marginLeft: "auto",
-                    marginRight : "auto",
-                    maxWidth : 1500,
+                    marginRight: "auto",
+                    maxWidth: 1500,
                     backgroundColor: this.state.theme.palette.background.paper
                 }}>
                     <SectionPreview

@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -42,13 +41,13 @@ class UploadCard extends React.PureComponent {
     };
 
     render() {
-        const style ={
-            padding : 0,
-            marginLeft : "5%",
-            width : "90%",
+        const style = {
+            padding: 0,
+            marginLeft: "5%",
+            width: "90%",
             height: "fit-content",
             display: "flex",
-            flexDirection : "column"
+            flexDirection: "column"
         };
         return (
             <Card className={"card-area"} style={style}>
