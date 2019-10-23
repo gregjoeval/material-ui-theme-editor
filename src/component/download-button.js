@@ -12,7 +12,7 @@ export default class DownloadButton extends React.Component {
 
     handleClick = () => {
         this.setState({running: true}, () => {
-            ThemeService.download(this.props.theme)
+            ThemeService.download(this.props.theme, this.props.fileName)
                 .then(() => this.setState({running: false}));
         });
     };

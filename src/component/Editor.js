@@ -12,6 +12,7 @@ import Card from "@material-ui/core/Card";
 import List from "@material-ui/core/List";
 import JSONInput from 'react-json-editor-ajrm';
 import locale    from 'react-json-editor-ajrm/locale/en';
+import OptionsCard from "./card/OptionsCard";
 
 
 const style ={
@@ -344,6 +345,7 @@ class Editor extends React.PureComponent {
     state = {
         JSONDialog : false,
         JSON : null,
+
     };
 
     componentDidMount() {
@@ -498,6 +500,21 @@ class Editor extends React.PureComponent {
                         <Button variant={"contained"} color={"secondary"} onClick={()=>{this.handleLoadTheme(this.state.JSON); this.setState({JSONDialog : false})}} >Save To Theme</Button>
                     </DialogActions>
                 </Dialog>
+
+                <ExpansionPanel style={{backgroundColor: drawerTheme.palette.background.default, padding : 0}} square className={"sectionArea"}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>} className={"sectionTitle"}>
+                        <Typography variant={"subtitle2"}>
+                            Options
+                        </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails style={{ padding: 0, width : "100%"}}>
+                        <OptionsCard
+                            setFileName={this.props.setFileName}
+                            fileName={this.props.fileName}
+                        />
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+
             </Drawer>
         );
     }

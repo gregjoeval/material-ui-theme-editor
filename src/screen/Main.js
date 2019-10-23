@@ -36,6 +36,7 @@ class Main extends React.Component {
         theme: createMuiTheme(),
         view: 'desktop',
         open: false,
+        fileName : "theme",
     };
 
 
@@ -61,6 +62,10 @@ class Main extends React.Component {
 
     toggleEditor = open => {
         this.setState({open: open})
+    };
+
+    handleFileName = fileName => {
+        this.setState({fileName : fileName})
     };
 
 
@@ -91,6 +96,8 @@ class Main extends React.Component {
                         theme={this.state.theme}
                         toggleEditor={this.toggleEditor}
                         open={this.state.open}
+                        setFileName={this.handleFileName}
+                        fileName={this.state.fileName}
                     />
                 </MuiThemeProvider>
                 <div className={classes.root} style={{
@@ -110,6 +117,7 @@ class Main extends React.Component {
                     <DownloadButton
                         rootClassName={classes.button}
                         theme={this.state.theme}
+                        fileName={this.state.fileName}
                     />
                 </div>
             </div>

@@ -23,13 +23,15 @@ const convert = (theme) => {
     }, {});
 };
 
-const download = (theme) => {
+const download = (theme, fileName = "theme") => {
     const clean = convert(theme);
     const fileToSave = new Blob([JSON.stringify(clean)], {
         type: 'application/json',
         name: 'theme.json',
     });
-    saveAs(fileToSave, 'theme.json');
+
+
+    saveAs(fileToSave, fileName + '.json');
     return Promise.resolve();
 };
 
