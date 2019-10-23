@@ -28,18 +28,18 @@ or download and un-zip a build
 ### Editor Additions
  * Added the ability to load a theme from a file
  * JSON editor to edit theme directly
+ * Set name of file download
 
 ### Preview
- * Added Some inputs and a display peice.
+ * Added Some inputs and a display piece.
 
 
 ## Future Feature List
- * Set name of file download
+
  * Swap between dark and light theme for the editor
  * Editor section to handle shadows
 
----
-
+## 
 To integrate a theme into you're project, you just have to do the following
 
 ```javascript
