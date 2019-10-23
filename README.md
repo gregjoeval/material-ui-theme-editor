@@ -29,7 +29,7 @@ or download and un-zip a build
  * JSON editor to edit theme directly
 
 ### Preview
-Added Some inputs and a display peice.
+ * Added Some inputs and a display peice.
 
 
 ## Future Feature List
