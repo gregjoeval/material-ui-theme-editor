@@ -29,6 +29,7 @@ or download and un-zip a build
  * Added the ability to load a theme from a file
  * JSON editor to edit theme directly
  * Set name of file download
+ * Swap Editor Between Light & Dark themes
 
 ### Preview
  * Added Some inputs and a display piece.
@@ -36,7 +37,6 @@ or download and un-zip a build
 
 ## Future Feature List
 
- * Swap between dark and light theme for the editor
  * Editor section to handle shadows
 
 ## 
