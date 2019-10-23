@@ -96,7 +96,9 @@ class Main extends React.Component {
                 <div className={classes.root} style={{
                     marginTop: 64,
                     width: "96%",
-                    marginLeft: "2%",
+                    marginLeft: "auto",
+                    marginRight : "auto",
+                    maxWidth : 1500,
                     backgroundColor: this.state.theme.palette.background.paper
                 }}>
                     <SectionPreview
