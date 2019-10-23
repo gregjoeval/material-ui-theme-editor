@@ -3,6 +3,10 @@ import {withStyles} from '@material-ui/core/styles';
 import {TextField} from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ColorBubble from "./color-bubble";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Popover from "@material-ui/core/Popover";
+import {SketchPicker} from "react-color";
+import ColorEditionListItem from "./color-edition-list-item";
 
 const styles = (theme) => ({
     root: {
@@ -14,11 +18,13 @@ const styles = (theme) => ({
 });
 
 class TextItem extends React.PureComponent {
-    handleChange = (location, value) => {
-        let string = this.props.value.split(",");
-        string[location] = value;
-        this.props.onChange(location, string.join(","));
+    handleChangeColor = (location, color) => {
+        /*this.props.onChange(this.props.path, rgba);*/
+
+        const string = this.makeValues(location, "color", null, color);
+        console.log(this.props.location ,location, string);
     };
+
 
     getValues = (string = null) => {
         let {value} = this.props;
@@ -28,13 +34,12 @@ class TextItem extends React.PureComponent {
         }
         let values = [];
         if (items.length === 3) {
-            items[2] = items[2].replace(")", "");
             for (let i = 0; i < 3; i++) {
-                let value = {color: []};
+                let value = {color: ""};
+                value.color = "rgba(" + items[i].split(" rgba(")[1];
                 value.size = items[i].split(" rgba(")[0].split(" ");
-                let colors = items[i].split(" rgba(")[1].split(",");
-                for (let j = 0; j < colors.length; j++) {
-                    value.color.push(parseFloat(colors[j]))
+                for (let k = 0; k < value.size.length; k++) {
+                    value.size[k] = value.size[k].replace("px", "")
                 }
                 values.push(value);
             }
@@ -42,29 +47,35 @@ class TextItem extends React.PureComponent {
         return values;
     };
 
-    makeValues = (location, type, index, value) => {
+    makeValues = (location, type, index = null, value) => {
         let values = this.getValues();
-        values[location][type][index] = value;
+        if (type === "color") {
+            values[location][type] = value;
+        }
+        else {
+            values[location][type][index] = value;
+        }
+
+       return this.makeString(values);
     };
 
     makeString = (values) => {
-
         let string = "";
         const SPACE = " ";
-        const RGBA_START = " rgba(";
         const COMMA = ",";
-        const RGBA_END = ")";
+        const PX = "px";
         if (values.length === 3) {
             for (let i = 0; i < 3; i++) {
-                string += values[i].size[0].replace(" ", "") + SPACE +
-                    values[i].size[1].replace(" ", "") + SPACE +
-                    values[i].size[2].replace(" ", "") + SPACE +
-                    values[i].size[3].replace(" ", "") + RGBA_START +
-                    values[i].color[0] + COMMA +
-                    values[i].color[1] + COMMA +
-                    values[i].color[2] + COMMA +
-                    values[i].color[3] + RGBA_END;
-                if (i < 2) {
+                if (values[i].color.substring(values[i].color.length - 1, values[i].color.length) !== ")") {
+                    values[i].color+= ")";
+                }
+                string +=
+                    values[i].size[0].replace(" ", "") + PX + SPACE +
+                    values[i].size[1].replace(" ", "") + PX + SPACE +
+                    values[i].size[2].replace(" ", "") + PX + SPACE +
+                    values[i].size[3].replace(" ", "") + PX +  " " + values[i].color.trim()
+
+;                if (i < 2) {
                     string += COMMA;
                 }
             }
@@ -82,37 +93,53 @@ class TextItem extends React.PureComponent {
                 {values.map((item, i) => {
                     const key = "section_" + i.toString();
                     const {size, color} = item;
-                    const rgba = "rgba(" + color[0] + "," + color[1] + "," + color[2] + "," + color[3] + ")";
                     return (
-                        <ListItem
-                            key={key}
+                        <React.Fragment
+                        key={key + "_frag"}
                         >
-                            <div style={{
-                                width: "100%",
-                                height: "100%",
-                                display: "flex",
-                                flexDirection: "row",
-                                alignItems: "center",
-                                justifyContent: "space-between"
-                            }}>
-                                <TextField InputProps={{className: "shadow-size"}} value={size[0]}
-                                           style={{borderRight: "1px solid grey"}}/>
-                                <TextField InputProps={{className: "shadow-size"}} value={size[1]}
-                                           style={{borderRight: "1px solid grey"}}/>
-                                <TextField InputProps={{className: "shadow-size"}} value={size[2]}
-                                           style={{borderRight: "1px solid grey"}}/>
-                                <TextField InputProps={{className: "shadow-size"}} value={size[3]}
-                                           style={{marginRight: 6}}/>
-                                <ColorBubble
-                                    style={{
-                                        height: 25,
-                                        width: 25,
-                                    }}
+                            <ListItem
+                                key={key}
+                            >
+                                <div style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "space-between"
+                                }}>
+                                    <TextField onInput={(event)=>{this.makeValues(this.props.location, "size", 0, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[0]} style={{borderRight: "1px solid grey"}}/>
+                                    <TextField onInput={(event)=>{this.makeValues(this.props.location, "size", 1, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[1]} style={{borderRight: "1px solid grey"}}/>
+                                    <TextField onInput={(event)=>{this.makeValues(this.props.location, "size", 2, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[2]} style={{borderRight: "1px solid grey"}}/>
+                                    <TextField onInput={(event)=>{this.makeValues(this.props.location, "size", 3, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[3]} style={{marginRight: 6}}               />
+                                </div>
+                            </ListItem>
+                            <ColorEditionListItem
+                                label={"Color"}
+                                onChange={this.handleChangeColor}
+                                value={color}
+                                path={i}
+                            />
+{/*                            <Popover
+                                key={"popover" + i.toString() + "_" + this.props.location}
+                                anchorEl={this.state.anchor[i]}
+                                anchorOrigin={{
+                                    vertical: 'center',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                onClose={()=>this.togglePopOver(i, null)}
+                                open={Boolean(this.state.anchor[i])}
+                            >
+                                <SketchPicker
                                     color={rgba}
-                                    size={10}
+                                    onChangeComplete={this.handleChangeColor}
                                 />
-                            </div>
-                        </ListItem>
+                            </Popover>*/}
+                        </React.Fragment>
                     );
                 })}
             </React.Fragment>
