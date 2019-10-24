@@ -24,6 +24,8 @@ or download and un-zip a build
 * Transitions :
   * Duration,
   * Easing
+* Shadows : 
+  * 1-24
   
 ### Editor Additions
  * Added the ability to load a theme from a file
@@ -36,8 +38,9 @@ or download and un-zip a build
 
 
 ## Future Feature List
-
- * Editor section to handle shadows
+ * Increase Preformance
+ * More Preview Sections
+ * Loading State
 
 ## 
 To integrate a theme into you're project, you just have to do the following
