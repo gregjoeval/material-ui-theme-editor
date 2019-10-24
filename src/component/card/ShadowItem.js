@@ -22,7 +22,12 @@ class TextItem extends React.PureComponent {
         /*this.props.onChange(this.props.path, rgba);*/
 
         const string = this.makeValues(location, "color", null, color);
-        console.log(this.props.location ,location, string);
+        this.props.onChange(this.props.location , string)
+    };
+
+    handleChangeSize = (location, type, index = null, value) => {
+        const string = this.makeValues(location, type, index, value);
+        this.props.onChange(this.props.location, string);
     };
 
 
@@ -108,10 +113,10 @@ class TextItem extends React.PureComponent {
                                     alignItems: "center",
                                     justifyContent: "space-between"
                                 }}>
-                                    <TextField onInput={(event)=>{this.makeValues(this.props.location, "size", 0, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[0]} style={{borderRight: "1px solid grey"}}/>
-                                    <TextField onInput={(event)=>{this.makeValues(this.props.location, "size", 1, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[1]} style={{borderRight: "1px solid grey"}}/>
-                                    <TextField onInput={(event)=>{this.makeValues(this.props.location, "size", 2, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[2]} style={{borderRight: "1px solid grey"}}/>
-                                    <TextField onInput={(event)=>{this.makeValues(this.props.location, "size", 3, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[3]} style={{marginRight: 6}}               />
+                                    <TextField onInput={(event)=>{this.handleChangeSize(i, "size", 0, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[0]} style={{borderRight: "1px solid grey"}}/>
+                                    <TextField onInput={(event)=>{this.handleChangeSize(i, "size", 1, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[1]} style={{borderRight: "1px solid grey"}}/>
+                                    <TextField onInput={(event)=>{this.handleChangeSize(i, "size", 2, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[2]} style={{borderRight: "1px solid grey"}}/>
+                                    <TextField onInput={(event)=>{this.handleChangeSize(i, "size", 3, event.target.value)}} InputProps={{className: "shadow-size", endAdornment: <InputAdornment position="end" style={{marginRight : 2}}>px</InputAdornment>}} value={size[3]} style={{marginRight: 6}}               />
                                 </div>
                             </ListItem>
                             <ColorEditionListItem
@@ -120,25 +125,6 @@ class TextItem extends React.PureComponent {
                                 value={color}
                                 path={i}
                             />
-{/*                            <Popover
-                                key={"popover" + i.toString() + "_" + this.props.location}
-                                anchorEl={this.state.anchor[i]}
-                                anchorOrigin={{
-                                    vertical: 'center',
-                                    horizontal: 'center',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'left',
-                                }}
-                                onClose={()=>this.togglePopOver(i, null)}
-                                open={Boolean(this.state.anchor[i])}
-                            >
-                                <SketchPicker
-                                    color={rgba}
-                                    onChangeComplete={this.handleChangeColor}
-                                />
-                            </Popover>*/}
                         </React.Fragment>
                     );
                 })}

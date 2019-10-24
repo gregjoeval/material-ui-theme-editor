@@ -70,7 +70,9 @@ class Editor extends React.PureComponent {
     };
 
     changeShadow = (location, value) => {
-        console.log(location, value)
+        let theme = this.props.theme;
+        theme.shadows[location] = value;
+        this.handleLoadTheme(theme);
     };
 
     setValue = (object, path, value) => {
