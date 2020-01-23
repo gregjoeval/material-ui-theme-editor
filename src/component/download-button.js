@@ -3,11 +3,11 @@ import CloudDownload from '@material-ui/icons/CloudDownload';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import ThemeService from '../service/theme';
-import Fab from "@material-ui/core/Fab";
+import Fab from '@material-ui/core/Fab';
 
 export default class DownloadButton extends React.Component {
     state = {
-        running: false,
+        running: false
     };
 
     handleClick = () => {
@@ -20,10 +20,13 @@ export default class DownloadButton extends React.Component {
     render() {
         const {rootClassName} = this.props;
         return (
-            <Tooltip title="Download your theme" placement="left">
+            <Tooltip
+                placement='left'
+                title='Download your theme'
+            >
                 <Fab
                     className={rootClassName}
-                    color="primary"
+                    color='primary'
                     disabled={this.state.running}
                     onClick={this.handleClick}
                 >

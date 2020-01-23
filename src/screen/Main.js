@@ -2,35 +2,33 @@ import React from 'react';
 import {createMuiTheme, MuiThemeProvider, withStyles} from '@material-ui/core/styles';
 import SectionPreview from '../component/section-preview';
 import DownloadButton from '../component/download-button';
-import {AppBar, IconButton, Typography} from "@material-ui/core";
-import Toolbar from "@material-ui/core/Toolbar";
+import {AppBar, IconButton, Typography} from '@material-ui/core';
+import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from "../component/Editor";
-
-import darkTheme from '../component/EditorDarkTheme'
-import lightTheme from '../component/EditorLightTheme'
-
+import Drawer from '../component/Editor';
+import darkTheme from '../component/EditorDarkTheme';
+import lightTheme from '../component/EditorLightTheme';
 
 const styles = (theme) => ({
     root: {
         backgroundColor: theme.palette.background.default,
         display: 'flex',
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'row'
     },
     edition: {
         minWidth: 250,
         maxWidth: 350,
-        flex: 2,
+        flex: 2
     },
     preview: {
-        flex: 3,
+        flex: 3
     },
     button: {
         position: 'fixed',
         bottom: theme.spacing.unit * 2,
-        right: theme.spacing.unit * 2,
-    },
+        right: theme.spacing.unit * 2
+    }
 });
 
 class Main extends React.Component {
@@ -38,8 +36,8 @@ class Main extends React.Component {
         theme: createMuiTheme(),
         view: 'desktop',
         open: false,
-        fileName: "theme",
-        drawerTheme: "dark",
+        fileName: 'theme',
+        drawerTheme: 'dark'
     };
 
 
@@ -54,9 +52,9 @@ class Main extends React.Component {
             this.setState({theme: createMuiTheme({palette: {type: theme.palette.type}})});
         }
         setTimeout(() => {
-            document.getElementById("root").style.backgroundColor = this.state.theme.palette.background.paper;
+            document.getElementById('root').style.backgroundColor = this.state.theme.palette.background.paper;
             document.body.style.backgroundColor = this.state.theme.palette.background.paper;
-        }, 100)
+        }, 100);
     };
 
     handleChangeView = (view) => {
@@ -64,22 +62,22 @@ class Main extends React.Component {
     };
 
     toggleEditor = open => {
-        this.setState({open: open})
+        this.setState({open: open});
     };
 
     handleFileName = fileName => {
-        this.setState({fileName: fileName})
+        this.setState({fileName: fileName});
     };
 
     getEditorTheme = () => {
-        if (this.state.drawerTheme === "light") {
+        if (this.state.drawerTheme === 'light') {
             return createMuiTheme(lightTheme);
         }
         return createMuiTheme(darkTheme);
     };
 
     setEditorTheme = type => {
-        this.setState({drawerTheme: type})
+        this.setState({drawerTheme: type});
     };
 
     render() {
@@ -88,53 +86,61 @@ class Main extends React.Component {
         return (
             <div style={{flexGrow: 1}}>
                 <MuiThemeProvider theme={EditorTheme}>
-                    <AppBar style={{zIndex: 1101}} color="default">
+                    <AppBar
+                        color='default'
+                        style={{zIndex: 1101}}
+                    >
                         <Toolbar>
                             <IconButton
-                                edge="start"
-                                style={{marginRight: 20,}}
+                                edge='start'
                                 onClick={() => {
-                                    this.setState({open: true})
+                                    this.setState({open: true});
                                 }}
+                                style={{marginRight: 20}}
                             >
-                                <MenuIcon
-                                />
+                                <MenuIcon />
                             </IconButton>
-                            <Typography variant={"h6"} style={{flexGrow: 1, textAlign: "center"}}>
+                            <Typography
+                                style={{flexGrow: 1, textAlign: 'center'}}
+                                variant={'h6'}
+                            >
                                 Material UI Theme Builder
                             </Typography>
                         </Toolbar>
                     </AppBar>
                     <Drawer
-                        onChange={this.handleChangeTheme}
-                        theme={this.state.theme}
-                        toggleEditor={this.toggleEditor}
-                        open={this.state.open}
-                        setFileName={this.handleFileName}
-                        fileName={this.state.fileName}
                         drawerTheme={EditorTheme}
                         drawerThemeType={this.state.drawerTheme}
+                        fileName={this.state.fileName}
+                        onChange={this.handleChangeTheme}
+                        open={this.state.open}
                         setEditorTheme={this.setEditorTheme}
+                        setFileName={this.handleFileName}
+                        theme={this.state.theme}
+                        toggleEditor={this.toggleEditor}
                     />
                 </MuiThemeProvider>
-                <div className={classes.root} style={{
-                    marginTop: 64,
-                    width: "96%",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    maxWidth: 1500,
-                    backgroundColor: this.state.theme.palette.background.paper
-                }}>
+                <div
+                    className={classes.root}
+                    style={{
+                        marginTop: 64,
+                        width: '96%',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        maxWidth: 1500,
+                        backgroundColor: this.state.theme.palette.background.paper
+                    }}
+                >
                     <SectionPreview
-                        rootClassName={classes.preview}
                         onChange={this.handleChangeView}
+                        rootClassName={classes.preview}
                         theme={this.state.theme}
                         view={this.state.view}
                     />
                     <DownloadButton
+                        fileName={this.state.fileName}
                         rootClassName={classes.button}
                         theme={this.state.theme}
-                        fileName={this.state.fileName}
                     />
                 </div>
             </div>

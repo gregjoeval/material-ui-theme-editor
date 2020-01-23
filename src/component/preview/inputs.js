@@ -1,41 +1,39 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import TextField from "@material-ui/core/TextField";
-import {FormControl, FormControlLabel, Radio, RadioGroup, Typography} from "@material-ui/core";
-import Checkbox from "@material-ui/core/Checkbox";
-import {Slider} from "@material-ui/lab";
-import Switch from "@material-ui/core/Switch";
+import TextField from '@material-ui/core/TextField';
+import {FormControl, FormControlLabel, Radio, RadioGroup, Typography} from '@material-ui/core';
+import Checkbox from '@material-ui/core/Checkbox';
+import {Slider} from '@material-ui/lab';
+import Switch from '@material-ui/core/Switch';
 
 const styles = (theme) => ({
     wrapper: {
-        width: "100%",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-around",
-        flexWrap: "wrap",
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        flexWrap: 'wrap'
     },
     root: {
         padding: theme.spacing.unit,
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         minWidth: 261,
-        justifyContent: "center",
-        alignItems: "center"
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     button: {
-        margin: theme.spacing.unit,
-    },
+        margin: theme.spacing.unit
+    }
 });
 
 class PreviewInputs extends React.PureComponent {
 
-    valuetext = (value) => {
-        return `${value}°C`;
-    };
+    valuetext = (value) => `${value}°C`;
 
     state = {
         checkedP: true,
-        checkedS: true,
+        checkedS: true
     };
 
     render() {
@@ -45,90 +43,107 @@ class PreviewInputs extends React.PureComponent {
                 <div className={classes.wrapper}>
                     <div className={classes.root}>
                         <TextField
-                            label="Default Text Field"
-                            margin="none"
                             className={classes.button}
+                            label='Default Text Field'
+                            margin='none'
                         />
                         <TextField
-                            label="Outlined Text Field"
-                            margin="none"
-                            variant="outlined"
                             className={classes.button}
+                            label='Outlined Text Field'
+                            margin='none'
+                            variant='outlined'
                         />
                         <TextField
-                            label="Filled Text Field"
-                            margin="none"
-                            variant="filled"
                             className={classes.button}
+                            label='Filled Text Field'
+                            margin='none'
+                            variant='filled'
                         />
                     </div>
                     <div className={classes.root}>
                         <FormControl>
                             <RadioGroup>
                                 <FormControlLabel
-                                    value={"Primary"}
-                                    label={"Primary Radio"}
-                                    labelPlacement="start"
-                                    control={<Radio color={"primary"}/>}
+                                    control={<Radio color={'primary'}/>}
+                                    label={'Primary Radio'}
+                                    labelPlacement='start'
+                                    value={'Primary'}
                                 />
                                 <FormControlLabel
-                                    value={"Secondary"}
-                                    label={"Secondary  Radio"}
-                                    labelPlacement="start"
-                                    control={<Radio color={"secondary"}/>}
+                                    control={<Radio color={'secondary'}/>}
+                                    label={'Secondary  Radio'}
+                                    labelPlacement='start'
+                                    value={'Secondary'}
                                 />
                             </RadioGroup>
-                            <FormControlLabel labelPlacement="start"
-                                              control={<Checkbox value="checkedP" color={"primary"}/>}
-                                              label="Primary Checkbox"/>
-                            <FormControlLabel labelPlacement="start"
-                                              control={<Checkbox value="checkedS" color={"secondary"}/>}
-                                              label="Secondary Checkbox"/>
+                            <FormControlLabel
+                                control={(
+                                    <Checkbox
+                                        color={'primary'}
+                                        value='checkedP'
+                                    />
+                                )}
+                                label='Primary Checkbox'
+                                labelPlacement='start'
+                            />
+                            <FormControlLabel
+                                control={(
+                                    <Checkbox
+                                        color={'secondary'}
+                                        value='checkedS'
+                                    />
+                                )}
+                                label='Secondary Checkbox'
+                                labelPlacement='start'
+                            />
                         </FormControl>
                     </div>
                     <div className={classes.root}>
                         <div>
-                            <Typography id="discrete-slider-always" gutterBottom>
+                            <Typography
+                                gutterBottom={true}
+                                id='discrete-slider-always'
+                            >
                                 Slider
                             </Typography>
                             <Slider
+                                aria-labelledby='discrete-slider-always'
                                 defaultValue={50}
-                                value={50}
-                                aria-labelledby="discrete-slider-always"
-                                step={1}
-                                min={0}
                                 max={100}
+                                min={0}
+                                step={1}
                                 style={{width: 150}}
+                                value={50}
                             />
                         </div>
                         <div>
                             <FormControlLabel
-                                control={
+                                control={(
                                     <Switch
                                         checked={this.state.checkedP}
+                                        color='primary'
                                         onChange={(event) => {
-                                            this.setState({checkedP: event.target.checked})
+                                            this.setState({checkedP: event.target.checked});
                                         }}
-                                        value="checkedP"
-                                        color="primary"
+                                        value='checkedP'
                                     />
-                                }
-                                label="Primary"
+                                )}
+                                label='Primary'
                             />
                         </div>
                         <div>
                             <FormControlLabel
-                                control={
+                                control={(
                                     <Switch
                                         checked={this.state.checkedS}
+                                        color='secondary'
                                         onChange={(event) => {
-                                            this.setState({checkedS: event.target.checked})
+                                            this.setState({checkedS: event.target.checked});
                                         }}
-                                        value="checkedS"
-                                        color="secondary"
+                                        value='checkedS'
                                     />
-                                }
-                                label="Secondary"
+                                )}
+                                label='Secondary'
                             />
                         </div>
                     </div>

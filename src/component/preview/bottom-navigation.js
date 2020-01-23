@@ -8,11 +8,11 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const styles = (theme) => ({
     root: {
-        padding: theme.spacing.unit,
+        padding: theme.spacing.unit
     },
     item: {
-        maxWidth: 500,
-    },
+        maxWidth: 500
+    }
 });
 
 class PreviewBottomNavigation extends React.PureComponent {
@@ -22,12 +22,21 @@ class PreviewBottomNavigation extends React.PureComponent {
             <div className={classes.root}>
                 <BottomNavigation
                     className={classes.item}
-                    showLabels
+                    showLabels={true}
                     value={0}
                 >
-                    <BottomNavigationAction label="Recents" icon={<RestoreIcon/>}/>
-                    <BottomNavigationAction label="Favorites" icon={<FavoriteIcon color={"secondary"}/>}/>
-                    <BottomNavigationAction label="Nearby" icon={<LocationOnIcon color={"error"}/>}/>
+                    <BottomNavigationAction
+                        icon={<RestoreIcon/>}
+                        label='Recents'
+                    />
+                    <BottomNavigationAction
+                        icon={<FavoriteIcon color={'secondary'}/>}
+                        label='Favorites'
+                    />
+                    <BottomNavigationAction
+                        icon={<LocationOnIcon color={'error'}/>}
+                        label='Nearby'
+                    />
                 </BottomNavigation>
             </div>
         );

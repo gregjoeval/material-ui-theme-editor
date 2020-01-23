@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import clsx from 'clsx';
 import {withStyles} from '@material-ui/core/styles';
 
 import PreviewDisplay from './preview';
@@ -9,31 +9,31 @@ const styles = (theme) => ({
     root: {
         display: 'flex',
         flex: 3,
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     selector: {
         alignSelf: 'center',
-        margin: theme.spacing.unit,
+        margin: theme.spacing.unit
     },
     container: {
         alignSelf: 'center',
         flex: 1,
         margin: theme.spacing.unit,
         overflow: 'auto',
-        width: '100%',
+        width: '100%'
     },
     desktop: {},
     mobile: {
         maxWidth: 350,
-        maxHeight: 650,
-    },
+        maxHeight: 650
+    }
 });
 
 class SectionPreview extends React.PureComponent {
     render() {
         const {classes, rootClassName} = this.props;
         return (
-            <section className={cn(classes.root, rootClassName)}>
+            <section className={clsx(classes.root, rootClassName)}>
                 <div className={classes.selector}>
                     <ViewSelector
                         className={classes.selector}
@@ -42,9 +42,9 @@ class SectionPreview extends React.PureComponent {
                     />
                 </div>
                 <PreviewDisplay
-                    className={cn(classes.container, {
+                    className={clsx(classes.container, {
                         [classes.desktop]: this.props.view === 'desktop',
-                        [classes.mobile]: this.props.view === 'mobile',
+                        [classes.mobile]: this.props.view === 'mobile'
                     })}
                     theme={this.props.theme}
                 />

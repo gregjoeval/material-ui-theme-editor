@@ -10,18 +10,18 @@ import ColorBubble from './color-bubble';
 const styles = () => ({
     avatar: {
         height: 25,
-        width: 25,
-    },
+        width: 25
+    }
 });
 
 const anchorOrigin = {
     vertical: 'bottom',
-    horizontal: 'left',
+    horizontal: 'left'
 };
 
 class ColorEditionListItem extends React.Component {
     state = {
-        anchor: null,
+        anchor: null
     };
 
     handleClick = (event) => {
@@ -40,12 +40,12 @@ class ColorEditionListItem extends React.Component {
     render() {
         const {
             classes,
-            rootClassName,
+            rootClassName
         } = this.props;
         return (
             <React.Fragment>
                 <ListItem
-                    button
+                    button={true}
                     className={rootClassName}
                     onClick={this.handleClick}
                 >

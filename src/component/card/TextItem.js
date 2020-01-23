@@ -1,15 +1,15 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import {TextField} from "@material-ui/core";
-import ListItem from "@material-ui/core/ListItem";
+import {TextField} from '@material-ui/core';
+import ListItem from '@material-ui/core/ListItem';
 
 const styles = (theme) => ({
     root: {
-        paddingBottom: theme.spacing.unit,
+        paddingBottom: theme.spacing.unit
     },
     title: {
-        fontSize: 14,
-    },
+        fontSize: 14
+    }
 });
 
 class TextItem extends React.PureComponent {
@@ -22,12 +22,12 @@ class TextItem extends React.PureComponent {
         return (
             <ListItem>
                 <TextField
-                    label={label}
-                    key={path}
                     id={path}
+                    key={path}
+                    label={label}
                     name={name}
-                    value={value}
                     onChange={(event) => this.handleChange(path, event.target.value)}
+                    value={value}
                 />
             </ListItem>
         );

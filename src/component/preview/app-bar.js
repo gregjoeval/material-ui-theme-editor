@@ -7,17 +7,17 @@ import Typography from '@material-ui/core/Typography';
 const styles = (theme) => ({
     root: {
         padding: 0,
-        display: "flex",
-        flexDirection: "row",
-        width: "100%",
-        flexWrap: "wrap",
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+        flexWrap: 'wrap'
     },
     item: {
-        marginBottom: theme.spacing.unit,
+        marginBottom: theme.spacing.unit
     },
     max: {
-        flexGrow: 1,
-    },
+        flexGrow: 1
+    }
 });
 
 class PreviewAppBar extends React.PureComponent {
@@ -26,27 +26,48 @@ class PreviewAppBar extends React.PureComponent {
         return (
             <div className={classes.root}>
                 <div className={classes.max}>
-                    <AppBar className={classes.item} position="relative" color="default">
+                    <AppBar
+                        className={classes.item}
+                        color='default'
+                        position='relative'
+                    >
                         <Toolbar>
-                            <Typography variant={"h6"} color="inherit">
+                            <Typography
+                                color='inherit'
+                                variant={'h6'}
+                            >
                                 Default App Bar
                             </Typography>
                         </Toolbar>
                     </AppBar>
                 </div>
                 <div className={classes.max}>
-                    <AppBar className={classes.item} position="relative" color="primary">
+                    <AppBar
+                        className={classes.item}
+                        color='primary'
+                        position='relative'
+                    >
                         <Toolbar>
-                            <Typography variant={"h6"} color="inherit">
+                            <Typography
+                                color='inherit'
+                                variant={'h6'}
+                            >
                                 Primary App Bar
                             </Typography>
                         </Toolbar>
                     </AppBar>
                 </div>
                 <div className={classes.max}>
-                    <AppBar className={classes.item} position="relative" color="secondary">
+                    <AppBar
+                        className={classes.item}
+                        color='secondary'
+                        position='relative'
+                    >
                         <Toolbar>
-                            <Typography variant={"h6"} color="inherit">
+                            <Typography
+                                color='inherit'
+                                variant={'h6'}
+                            >
                                 Secondary App Bar
                             </Typography>
                         </Toolbar>

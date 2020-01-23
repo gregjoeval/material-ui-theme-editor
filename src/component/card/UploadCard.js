@@ -4,38 +4,38 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import {Button, ListItem} from "@material-ui/core";
+import {Button, ListItem} from '@material-ui/core';
 
 
 const styles = (theme) => ({
     root: {
-        paddingBottom: theme.spacing.unit,
+        paddingBottom: theme.spacing.unit
     },
     title: {
-        fontSize: 14,
-    },
+        fontSize: 14
+    }
 });
 
 class UploadCard extends React.PureComponent {
     state = {
-        STRING: "",
+        STRING: ''
     };
 
     storeString = (event) => {
         const fileReader = new FileReader();
         fileReader.readAsText(event.target.files[0]);
         fileReader.onload = (ev) => {
-            this.setState({STRING: ev.target.result})
-        }
+            this.setState({STRING: ev.target.result});
+        };
     };
 
     loadTheme = () => {
-        if (this.state.STRING !== "") {
+        if (this.state.STRING !== '') {
             try {
-                let theme = JSON.parse(this.state.STRING);
+                const theme = JSON.parse(this.state.STRING);
                 this.props.onChange(theme);
             } catch (e) {
-                console.log(e.toString())
+                console.log(e.toString());
             }
         }
     };
@@ -43,33 +43,41 @@ class UploadCard extends React.PureComponent {
     render() {
         const style = {
             padding: 0,
-            marginLeft: "5%",
-            width: "90%",
-            height: "fit-content",
-            display: "flex",
-            flexDirection: "column"
+            marginLeft: '5%',
+            width: '90%',
+            height: 'fit-content',
+            display: 'flex',
+            flexDirection: 'column'
         };
         return (
-            <Card className={"card-area"} style={style}>
+            <Card
+                className={'card-area'}
+                style={style}
+            >
                 <CardContent>
                     <Typography
-                        variant={"subheading"}
-                        color="textSecondary"
+                        color='textSecondary'
+                        variant={'subheading'}
                     >
                         Select File
                     </Typography>
                 </CardContent>
-                <List dense>
+                <List dense={true}>
                     <ListItem>
-                        <input style={{color: "white"}} type="file" accept=".json,application/json" id="jsonFileInput"
-                               onChange={this.storeString}/>
+                        <input
+                            accept='.json,application/json'
+                            id='jsonFileInput'
+                            onChange={this.storeString}
+                            style={{color: 'white'}}
+                            type='file'
+                        />
                     </ListItem>
                     <ListItem>
                         <Button
-                            variant={"contained"}
-                            color={"secondary"}
+                            color={'secondary'}
                             onClick={this.loadTheme}
-                            style={{textTransform: "capitalize"}}
+                            style={{textTransform: 'capitalize'}}
+                            variant={'contained'}
                         >
                             load theme
                         </Button>

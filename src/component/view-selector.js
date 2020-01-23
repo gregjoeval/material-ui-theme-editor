@@ -9,8 +9,8 @@ const styles = () => ({
     root: {
         display: 'flex',
         flex: 3,
-        flexDirection: 'column',
-    },
+        flexDirection: 'column'
+    }
 });
 
 class ViewSelector extends React.PureComponent {
@@ -20,14 +20,14 @@ class ViewSelector extends React.PureComponent {
     render() {
         return (
             <ToggleButtonGroup
-                exclusive
+                exclusive={true}
                 onChange={this.handleChange}
                 value={this.props.value}
             >
-                <ToggleButton value="mobile">
+                <ToggleButton value='mobile'>
                     <Smartphone/>
                 </ToggleButton>
-                <ToggleButton value="desktop">
+                <ToggleButton value='desktop'>
                     <DesktopWindows/>
                 </ToggleButton>
             </ToggleButtonGroup>

@@ -5,31 +5,31 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import SelectItem from "./SelectItem";
-import ColorEditionListItem from "./color-edition-list-item";
-import TextItem from "./TextItem";
-import {Divider, ListItem} from "@material-ui/core";
-import ShadowItem from "./ShadowItem";
+import SelectItem from './SelectItem';
+import ColorEditionListItem from './color-edition-list-item';
+import TextItem from './TextItem';
+import {Divider, ListItem} from '@material-ui/core';
+import ShadowItem from './ShadowItem';
 
 
 Object.byString = function (o, s) {
     s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
-    s = s.replace(/^\./, '');           // strip a leading dot
-    let a = s.split('.');
+    s = s.replace(/^\./, ''); // strip a leading dot
+    const a = s.split('.');
     for (let i = 0, n = a.length; i < n; ++i) {
-        let k = a[i];
+        const k = a[i];
         if (k in o) {
             o = o[k];
         } else {
             return;
         }
     }
-    if (/^\d+\.\d+$/.test(o.toString())) {
-        if (o.toString().includes(".")) {
+    if ((/^\d+\.\d+$/).test(o.toString())) {
+        if (o.toString().includes('.')) {
             return parseFloat(o);
-        } else {
-            return parseInt(o);
         }
+        return parseInt(o);
+
     }
 
     return o;
@@ -38,12 +38,12 @@ Object.byString = function (o, s) {
 
 const styles = (theme) => ({
     root: {
-        paddingBottom: theme.spacing.unit,
+        paddingBottom: theme.spacing.unit
     },
     title: {
-        fontSize: 14,
+        fontSize: 14
 
-    },
+    }
 });
 
 class GenericCard extends React.PureComponent {
@@ -51,84 +51,90 @@ class GenericCard extends React.PureComponent {
         this.props.onChange(path, value);
     };
 
-    shadowValue = (location) => {
-        return this.props.theme.shadows[location]
-    };
+    shadowValue = (location) => this.props.theme.shadows[location];
 
     render() {
         const {label, fields} = this.props;
         return (
-            <Card className={"card-area"} style={{height: "fit-content", display: "inline-table"}}>
+            <Card
+                className={'card-area'}
+                style={{height: 'fit-content', display: 'inline-table'}}
+            >
                 <CardContent style={{paddingBottom: 6, paddingTop: 10}}>
                     <Typography
-                        variant={"subheading"}
-                        color="textSecondary"
+                        color='textSecondary'
+                        variant={'subheading'}
                     >
                         {label}
                     </Typography>
                 </CardContent>
                 <Divider/>
-                <List dense>
+                <List dense={true}>
                     {fields.map(item => {
-                        if (item.type === "select") {
+                        if (item.type === 'select') {
                             const {name, label, options, path} = item;
-                            return (<SelectItem
-                                name={name}
-                                label={label}
-                                options={options}
-                                onChange={this.handleChange}
-                                value={Object.byString(this.props.theme, path)}
-                                key={path}
-                                path={path}
-                            />);
-                        } else if (item.type === "color") {
+                            return (
+                                <SelectItem
+                                    key={path}
+                                    label={label}
+                                    name={name}
+                                    onChange={this.handleChange}
+                                    options={options}
+                                    path={path}
+                                    value={Object.byString(this.props.theme, path)}
+                                />
+                            );
+                        } else if (item.type === 'color') {
                             const {name, label, path} = item;
                             return (
                                 <ColorEditionListItem
+                                    key={path}
                                     label={label}
                                     name={name}
                                     onChange={this.handleChange}
-                                    value={Object.byString(this.props.theme, path)}
-                                    key={path}
                                     path={path}
+                                    value={Object.byString(this.props.theme, path)}
                                 />
                             );
-                        } else if (item.type === "text") {
+                        } else if (item.type === 'text') {
                             const {label, name, path} = item;
                             return (
                                 <TextItem
+                                    key={path}
                                     label={label}
                                     name={name}
                                     onChange={this.handleChange}
-                                    value={Object.byString(this.props.theme, path)}
-                                    key={path}
                                     path={path}
+                                    value={Object.byString(this.props.theme, path)}
                                 />
                             );
-                        } else if (item.type === "displayMessage") {
+                        } else if (item.type === 'displayMessage') {
                             const {variant, color, message} = item;
                             return (
                                 <ListItem
-                                    key={message.replace(" ", "")}
+                                    key={message.replace(' ', '')}
                                     style={{paddingTop: 0, paddingBottom: 0}}
                                 >
-                                    <Typography variant={variant} color={color}>
+                                    <Typography
+                                        color={color}
+                                        variant={variant}
+                                    >
                                         {message}
                                     </Typography>
                                 </ListItem>
                             );
-                        } else if (item.type === "shadow") {
+                        } else if (item.type === 'shadow') {
                             const {location} = item;
-                            const key = "shadow_" + location.toString();
+                            const key = `shadow_${ location.toString()}`;
                             return (
                                 <ShadowItem
+                                    key={key}
+                                    location={location}
                                     onChange={this.props.changeShadow}
                                     value={this.shadowValue(location)}
-                                    location={location}
-                                    key={key}
                                 />
                             );
-                        } else return null;
+                        } return null;
                     })}
                 </List>
             </Card>

@@ -4,29 +4,29 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import NavigationIcon from '@material-ui/icons/Navigation';
-import {Fab} from "@material-ui/core";
+import {Fab} from '@material-ui/core';
 
 const styles = (theme) => ({
     root: {
         padding: theme.spacing.unit,
-        display: "flex",
-        flexDirection: "column"
+        display: 'flex',
+        flexDirection: 'column'
     },
     row: {
         padding: theme.spacing.unit,
-        display: "flex",
-        flexDirection: "row",
-        margin: "10px auto",
+        display: 'flex',
+        flexDirection: 'row',
+        margin: '10px auto'
     },
     button: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing.unit
     },
     wrap: {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "space-around",
-    },
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around'
+    }
 });
 
 class PreviewButton extends React.PureComponent {
@@ -36,43 +36,135 @@ class PreviewButton extends React.PureComponent {
             <React.Fragment>
                 <div className={classes.wrap}>
                     <div className={classes.root}>
-                        <Button className={classes.button}>Default</Button>
-                        <Button className={classes.button} variant="outlined">Default</Button>
-                        <Button className={classes.button} variant="contained">Default</Button>
+                        <Button className={classes.button}>
+Default
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            variant='outlined'
+                        >
+Default
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            variant='contained'
+                        >
+Default
+                        </Button>
                     </div>
                     <div className={classes.root}>
-                        <Button color="primary" className={classes.button}>Primary</Button>
-                        <Button color="primary" className={classes.button} variant="outlined">Primary</Button>
-                        <Button color="primary" className={classes.button} variant="contained">Primary</Button>
+                        <Button
+                            className={classes.button}
+                            color='primary'
+                        >
+Primary
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            color='primary'
+                            variant='outlined'
+                        >
+Primary
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            color='primary'
+                            variant='contained'
+                        >
+Primary
+                        </Button>
                     </div>
                     <div className={classes.root}>
-                        <Button color="secondary" className={classes.button}>Secondary</Button>
-                        <Button color="secondary" className={classes.button} variant="outlined">Secondary</Button>
-                        <Button color="secondary" className={classes.button} variant="contained">Secondary</Button>
+                        <Button
+                            className={classes.button}
+                            color='secondary'
+                        >
+Secondary
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            color='secondary'
+                            variant='outlined'
+                        >
+Secondary
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            color='secondary'
+                            variant='contained'
+                        >
+Secondary
+                        </Button>
                     </div>
                     <div className={classes.root}>
-                        <Button disabled className={classes.button}>Disabled</Button>
-                        <Button disabled className={classes.button} variant="outlined">Disabled</Button>
-                        <Button disabled className={classes.button} variant="contained">Disabled</Button>
+                        <Button
+                            className={classes.button}
+                            disabled={true}
+                        >
+Disabled
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            disabled={true}
+                            variant='outlined'
+                        >
+Disabled
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            disabled={true}
+                            variant='contained'
+                        >
+Disabled
+                        </Button>
                     </div>
                     <div className={classes.root}>
-                        <Button href="#text-buttons" className={classes.button}>Link</Button>
-                        <Button href="#text-buttons" className={classes.button} variant="outlined">Link</Button>
-                        <Button href="#text-buttons" className={classes.button} variant="contained">Link</Button>
+                        <Button
+                            className={classes.button}
+                            href='#text-buttons'
+                        >
+Link
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            href='#text-buttons'
+                            variant='outlined'
+                        >
+Link
+                        </Button>
+                        <Button
+                            className={classes.button}
+                            href='#text-buttons'
+                            variant='contained'
+                        >
+Link
+                        </Button>
                     </div>
                 </div>
-                <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
                     <div className={classes.row}>
-                        <Fab color="primary" className={classes.button}>
+                        <Fab
+                            className={classes.button}
+                            color='primary'
+                        >
                             <AddIcon/>
                         </Fab>
-                        <Fab color="secondary" className={classes.button}>
+                        <Fab
+                            className={classes.button}
+                            color='secondary'
+                        >
                             <DeleteIcon/>
                         </Fab>
-                        <Fab disabled className={classes.button}>
+                        <Fab
+                            className={classes.button}
+                            disabled={true}
+                        >
                             <NavigationIcon/>
                         </Fab>
-                        <Fab href="#text-buttons" className={classes.button}>
+                        <Fab
+                            className={classes.button}
+                            href='#text-buttons'
+                        >
                             Link
                         </Fab>
                     </div>

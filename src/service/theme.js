@@ -16,25 +16,23 @@ const whitelist = [
 
 ];
 
-const convert = (theme) => {
-    return whitelist.reduce((res, key) => {
-        const value = get(theme, key);
-        return set(res, key, value);
-    }, {});
-};
+const convert = (theme) => whitelist.reduce((res, key) => {
+    const value = get(theme, key);
+    return set(res, key, value);
+}, {});
 
-const download = (theme, fileName = "theme") => {
+const download = (theme, fileName = 'theme') => {
     const clean = convert(theme);
     const fileToSave = new Blob([JSON.stringify(clean)], {
         type: 'application/json',
-        name: 'theme.json',
+        name: 'theme.json'
     });
 
 
-    saveAs(fileToSave, fileName + '.json');
+    saveAs(fileToSave, `${fileName }.json`);
     return Promise.resolve();
 };
 
 export default {
-    download,
+    download
 };
